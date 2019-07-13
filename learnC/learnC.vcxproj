@@ -127,6 +127,7 @@
     <ClCompile Include="hello.cpp" />
     <ClCompile Include="pointerDemo.cpp" />
     <ClCompile Include="StringDemo.cpp" />
+    <ClCompile Include="StructDemo.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -11,11 +11,12 @@ int max() {
 		return b;
 	}
 }
-
 extern void enumDemo();
 extern void pointerDemo();
 extern void stringDemo();
+extern void structDemo();
+
 int main() {
-	stringDemo();
+	structDemo();
 	return 0;
 }
