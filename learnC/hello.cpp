@@ -1,19 +1,19 @@
 #include<stdio.h>
 
-int max(int x, int y) {
-	if (x > y) {
-		return x;
-	}
-	else {
-		return y;
-	}
-}
-
-int main() {
+int max() {
 	int a, b;
 	scanf_s("%d", &a);
 	scanf_s("%d", &b);
-	int c = max(a, b);
-	printf("最大值为%d", c);
+	if (a > b) {
+		return a;
+	}
+	else {
+		return b;
+	}
+}
+
+extern void enumDemo();
+int main() {
+	enumDemo();
 	return 0;
 }
