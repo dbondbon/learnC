@@ -13,7 +13,9 @@ int max() {
 }
 
 extern void enumDemo();
+extern void pointerDemo();
+extern void stringDemo();
 int main() {
-	enumDemo();
+	stringDemo();
 	return 0;
 }

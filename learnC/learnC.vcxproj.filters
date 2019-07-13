@@ -21,5 +21,11 @@
     <ClCompile Include="EnumDemo.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="StringDemo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="pointerDemo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
