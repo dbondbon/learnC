@@ -126,7 +126,8 @@
     <ClCompile Include="EnumDemo.cpp" />
     <ClCompile Include="FileDemo.cpp" />
     <ClCompile Include="getcharAndputchar.cpp" />
-    <ClCompile Include="hello.cpp" />
+    <ClCompile Include="recursionDemo.cpp" />
+    <ClCompile Include="test.cpp" />
     <ClCompile Include="pointerDemo.cpp" />
     <ClCompile Include="StringDemo.cpp" />
     <ClCompile Include="StructDemo.cpp" />

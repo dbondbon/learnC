@@ -27,4 +27,5 @@ void readfileDemo()
 	printf("3:%s\n", buffer);
 
 	fclose(fp);
+	return;
 }

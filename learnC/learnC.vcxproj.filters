@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="hello.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="EnumDemo.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
@@ -34,6 +31,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="FileDemo.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="test.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="recursionDemo.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
