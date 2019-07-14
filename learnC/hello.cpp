@@ -15,8 +15,10 @@ extern void enumDemo();
 extern void pointerDemo();
 extern void stringDemo();
 extern void structDemo();
+extern void getcharAndputchar();
+extern void getsAndputs();
 
 int main() {
-	structDemo();
+	getsAndputs();
 	return 0;
 }

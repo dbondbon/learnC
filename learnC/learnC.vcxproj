@@ -124,6 +124,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="EnumDemo.cpp" />
+    <ClCompile Include="getcharAndputchar.cpp" />
     <ClCompile Include="hello.cpp" />
     <ClCompile Include="pointerDemo.cpp" />
     <ClCompile Include="StringDemo.cpp" />

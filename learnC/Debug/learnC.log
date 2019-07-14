@@ -1,3 +1,4 @@
-﻿  StructDemo.cpp
-G:\C-C++\learnC\learnC\StructDemo.cpp(20,1): error C4996:  'strcpy': This function or variable may be unsafe. Consider using strcpy_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-E:\Windows Kits\10\Include\10.0.17763.0\ucrt\string.h(133): message :  参见“strcpy”的声明
+﻿  getcharAndputchar.cpp
+  hello.cpp
+  正在生成代码...
+  learnC.vcxproj -> G:\C-C++\learnC\Debug\learnC.exe

@@ -17,7 +17,7 @@ void structDemo()
 	strcpy_s(stu.name, "zhangsan");
 	printf("%s的年龄为：%d", stu.name, stu.age);
 	Book book;
-	strcpy(book.author, "莫言");
+	strcpy_s(book.author, "莫言");
 	book.price = 25.0;
 	printf("%s的书要%f元", book.author, book.price);
 	return;
