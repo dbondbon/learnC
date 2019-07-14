@@ -1,10 +1,2 @@
-﻿  FileDemo.cpp
-G:\C-C++\learnC\learnC\FileDemo.cpp(6,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-E:\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(208): message :  参见“fopen”的声明
-G:\C-C++\learnC\learnC\FileDemo.cpp(17,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-E:\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(208): message :  参见“fopen”的声明
-G:\C-C++\learnC\learnC\FileDemo.cpp(19,1): warning C4996:  'fscanf': This function or variable may be unsafe. Consider using fscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  hello.cpp
-  正在生成代码...
-E:\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(1197): message :  参见“fscanf”的声明
-  learnC.vcxproj -> G:\C-C++\learnC\Debug\learnC.exe
+﻿  hello.cpp
+G:\C-C++\learnC\learnC\hello.cpp(17,2): error C3861:  “readfileDemo”: 找不到标识符

@@ -1,4 +1,5 @@
 #include<stdio.h>
+#include "global.h"
 
 int max() {
 	int a, b;
@@ -11,17 +12,9 @@ int max() {
 		return b;
 	}
 }
-extern void enumDemo();
-extern void pointerDemo();
-extern void stringDemo();
-extern void structDemo();
-extern void getcharAndputchar();
-extern void getsAndputs();
-extern void writefileDemo();
-extern void readfileDemo();
-
 
 int main() {
 	readfileDemo();
+	printf("%s %s", __DATE__, __TIME__);
 	return 0;
 }

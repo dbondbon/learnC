@@ -131,6 +131,9 @@
     <ClCompile Include="StringDemo.cpp" />
     <ClCompile Include="StructDemo.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="global.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
