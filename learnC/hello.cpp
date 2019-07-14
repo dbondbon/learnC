@@ -17,8 +17,9 @@ extern void stringDemo();
 extern void structDemo();
 extern void getcharAndputchar();
 extern void getsAndputs();
+extern void fileDemo();
 
 int main() {
-	getsAndputs();
+	fileDemo();
 	return 0;
 }

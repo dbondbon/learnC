@@ -1,4 +1,4 @@
-﻿  getcharAndputchar.cpp
-  hello.cpp
-  正在生成代码...
+﻿  FileDemo.cpp
+G:\C-C++\learnC\learnC\FileDemo.cpp(6,1): warning C4996:  'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+E:\Windows Kits\10\Include\10.0.17763.0\ucrt\stdio.h(208): message :  参见“fopen”的声明
   learnC.vcxproj -> G:\C-C++\learnC\Debug\learnC.exe
