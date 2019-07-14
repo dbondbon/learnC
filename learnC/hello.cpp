@@ -17,9 +17,11 @@ extern void stringDemo();
 extern void structDemo();
 extern void getcharAndputchar();
 extern void getsAndputs();
-extern void fileDemo();
+extern void writefileDemo();
+extern void readfileDemo();
+
 
 int main() {
-	fileDemo();
+	readfileDemo();
 	return 0;
 }

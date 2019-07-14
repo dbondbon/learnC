@@ -1,4 +1,4 @@
-使用fprintf写入文件
+使用fprintf  写入文件
 使用fputs写入文件使用fprintf写入文件
 使用fputs写入文件
 使用fprintf写入文件
