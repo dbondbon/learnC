@@ -4,5 +4,6 @@
 void readfileDemo();
 double factorial(unsigned int i);
 int fibonaci(int i);
+void bubble_sort(int arr[], int len);
 
 #endif
