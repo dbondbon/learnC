@@ -48,6 +48,9 @@
     <ClCompile Include="multiplicationTable.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="findGcd.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="global.h">

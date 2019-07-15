@@ -6,5 +6,6 @@ double factorial(unsigned int i);
 int fibonaci(int i);
 void bubble_sort(int arr[], int len);
 void PrintMultiplicationTable();
+int FindGcd(int, int);
 
 #endif

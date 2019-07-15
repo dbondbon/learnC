@@ -125,6 +125,7 @@
   <ItemGroup>
     <ClCompile Include="EnumDemo.cpp" />
     <ClCompile Include="FileDemo.cpp" />
+    <ClCompile Include="findGcd.cpp" />
     <ClCompile Include="getcharAndputchar.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="multiplicationTable.cpp" />
