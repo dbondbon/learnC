@@ -8,5 +8,6 @@ void bubble_sort(int arr[], int);
 void PrintMultiplicationTable();
 int FindGcd(int, int);
 int PalindromicNumber(int);
+void FlipString();
 
 #endif
