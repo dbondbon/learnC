@@ -126,6 +126,8 @@
     <ClCompile Include="EnumDemo.cpp" />
     <ClCompile Include="FileDemo.cpp" />
     <ClCompile Include="getcharAndputchar.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="multiplicationTable.cpp" />
     <ClCompile Include="recursionDemo.cpp" />
     <ClCompile Include="sortDemo.cpp" />
     <ClCompile Include="test.cpp" />
