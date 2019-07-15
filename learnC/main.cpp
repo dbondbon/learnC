@@ -3,10 +3,13 @@
 
 int main()
 {
-	int n1;
-	int n2;
-	scanf("%d %d", &n1, &n2);
-	int gcd = FindGcd(n1, n2);
-	printf("%d和%d的最大公约数为%d", n1, n2, gcd);
+	int originalInteger;
+	scanf("%d", &originalInteger);
+	int res = PalindromicNumber(originalInteger);
+	if (res == 0) {
+		printf("数%d是回文数", originalInteger);
+	} else {
+		printf("数%d不是回文数", originalInteger);
+	}
 	return 0;
 }
