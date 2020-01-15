@@ -123,6 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="assert.cpp" />
     <ClCompile Include="EnumDemo.cpp" />
     <ClCompile Include="FileDemo.cpp" />
     <ClCompile Include="findGcd.cpp" />
