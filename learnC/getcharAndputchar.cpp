@@ -7,7 +7,6 @@ void getcharAndputchar()
 	c = getchar();
 	printf("%d", c);
 	putchar(c);
-	return;
 }
 
 void getsAndputs() {

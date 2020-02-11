@@ -123,7 +123,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="assert.cpp" />
+    <ClCompile Include="dataStructure.cpp" />
     <ClCompile Include="EnumDemo.cpp" />
     <ClCompile Include="FileDemo.cpp" />
     <ClCompile Include="findGcd.cpp" />
@@ -134,12 +134,12 @@
     <ClCompile Include="palindromicNumber.cpp" />
     <ClCompile Include="recursionDemo.cpp" />
     <ClCompile Include="sortDemo.cpp" />
-    <ClCompile Include="test.cpp" />
     <ClCompile Include="pointerDemo.cpp" />
     <ClCompile Include="StringDemo.cpp" />
     <ClCompile Include="StructDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="dataStructure.h" />
     <ClInclude Include="global.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

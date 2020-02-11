@@ -8,13 +8,14 @@ void structDemo()
 		char author[20];
 		double price;
 	}Book;
-	struct Stu
+	typedef struct Stu
 	{
 		char name[20];
-		int age = 18;
-	}stu;	
+		int age;
+	}Stu;
+	Stu stu;
 	stu.age = 21;
-	strcpy_s(stu.name, "zhangsan");
+	strcpy_s(stu.name, "aaa");
 	printf("%sµÄÄêÁäÎª£º%d", stu.name, stu.age);
 	Book book;
 	strcpy_s(book.author, "ÄªÑÔ");

@@ -10,5 +10,4 @@ void PrintMultiplicationTable()
 		}
 		printf("\n");
 	}
-	return;
 }

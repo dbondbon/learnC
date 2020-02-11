@@ -1,5 +1,9 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include<stdio.h>
 #include "global.h"
+
+
 
 void writefileDemo()
 {
@@ -8,7 +12,6 @@ void writefileDemo()
 	fprintf(fp, "\n使用fprintf写入文件");
 	fputs("\n使用fputs写入文件", fp);
 	fclose(fp);
-	return;
 }
 
 void readfileDemo()
@@ -17,7 +20,7 @@ void readfileDemo()
 	char buffer[255];
 	fp = fopen("G:/C-C++/learnC/fileTest.txt", "r");
 
-	fscanf(fp, "%s", buffer);
+	int res = fscanf(fp, "%s", buffer);
 	printf("1:%s\n", buffer);
 
 	fgets(buffer, 255, fp);
@@ -27,5 +30,4 @@ void readfileDemo()
 	printf("3:%s\n", buffer);
 
 	fclose(fp);
-	return;
 }

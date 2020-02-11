@@ -30,5 +30,4 @@ void enumDemo() {
 			break;
 		}
 	} while (a == 1);
-	return;
 }
