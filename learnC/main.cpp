@@ -1,5 +1,5 @@
 #include<stdio.h>
-#include "global.h"
+#include "learnC.h"
 
 int main()
 {
