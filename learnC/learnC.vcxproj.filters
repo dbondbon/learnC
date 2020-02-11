@@ -15,54 +15,27 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="EnumDemo.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="StringDemo.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="pointerDemo.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="StructDemo.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="getcharAndputchar.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="FileDemo.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="recursionDemo.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="sortDemo.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="multiplicationTable.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="findGcd.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="palindromicNumber.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="flipString.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="dataStructure.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="learnC++.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="learnC.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="global.h">
+    <ClInclude Include="dataStructure.h">
       <Filter>头文件</Filter>
     </ClInclude>
-    <ClInclude Include="dataStructure.h">
+    <ClInclude Include="learnC++.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="learnC.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

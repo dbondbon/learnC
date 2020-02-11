@@ -1,5 +1,5 @@
-#ifndef LEARN_C_H
-#define LEARN_C_H
+#ifndef GLOBAL_H
+#define GLOBAL_H
 
 void readfileDemo();
 double factorial(unsigned int i);

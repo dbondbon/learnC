@@ -124,23 +124,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="dataStructure.cpp" />
-    <ClCompile Include="EnumDemo.cpp" />
-    <ClCompile Include="FileDemo.cpp" />
-    <ClCompile Include="findGcd.cpp" />
-    <ClCompile Include="flipString.cpp" />
-    <ClCompile Include="getcharAndputchar.cpp" />
+    <ClCompile Include="learnC++.cpp" />
+    <ClCompile Include="learnC.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="multiplicationTable.cpp" />
-    <ClCompile Include="palindromicNumber.cpp" />
-    <ClCompile Include="recursionDemo.cpp" />
-    <ClCompile Include="sortDemo.cpp" />
-    <ClCompile Include="pointerDemo.cpp" />
-    <ClCompile Include="StringDemo.cpp" />
-    <ClCompile Include="StructDemo.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dataStructure.h" />
-    <ClInclude Include="global.h" />
+    <ClInclude Include="learnC.h" />
+    <ClInclude Include="learnC++.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
