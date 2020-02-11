@@ -3,12 +3,12 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include <string.h>
-#include "learnC.h"
+#include "learn_c.h"
 
-void enumDemo() 
+void EnumDemo() 
 {
 	enum color {
-		red = 1, green, blue
+		RED = 1, GREEN, BLUE
 	};
 	enum color your_color;
 	int a = 0;
@@ -17,13 +17,13 @@ void enumDemo()
 		printf("请输入你选择的颜色(1.red, 2.green, 3.blue):");
 		scanf_s("%d", &your_color);
 		switch (your_color) {
-		case red:
+		case RED:
 			printf("你选择的颜色是红色");
 			break;
-		case green:
+		case GREEN:
 			printf("你选择的颜色是绿色");
 			break;
-		case blue:
+		case BLUE:
 			printf("你选择的颜色是蓝色");
 			break;
 		default:
@@ -34,7 +34,7 @@ void enumDemo()
 	} while (a == 1);
 }
 
-void writefileDemo()
+void WritefileDemo()
 {
 	FILE* fp = NULL;
 	fp = fopen("G:/C-C++/learnC/fileTest.txt", "a+");
@@ -43,7 +43,7 @@ void writefileDemo()
 	fclose(fp);
 }
 
-void readfileDemo()
+void ReadfileDemo()
 {
 	FILE* fp = NULL;
 	char buffer[255];
@@ -83,7 +83,7 @@ void FlipString()
 	return;
 }
 
-void getcharAndputchar()
+void GetcharAndputchar()
 {
 	int c;
 	printf("请输入一个值：");
@@ -92,7 +92,7 @@ void getcharAndputchar()
 	putchar(c);
 }
 
-void getsAndputs() {
+void GetsAndputs() {
 	char str[50];
 	printf("请输入字符串：");
 	gets_s(str);
@@ -129,7 +129,7 @@ int PalindromicNumber(int originalInteger)
 	}
 }
 
-void pointerDemo() {
+void PointerDemo() {
 	int  var[] = { 10, 100, 200 };
 	int  i, * ptr;
 
@@ -145,17 +145,17 @@ void pointerDemo() {
 }
 
 /*求阶乘*/
-double factorial(unsigned int i)
+double Factorial(unsigned int i)
 {
 	if (i <= 1)
 	{
 		return 1;
 	}
-	return i * factorial(i - 1);
+	return i * Factorial(i - 1);
 }
 
 /*斐波那契数列*/
-int fibonaci(int i)
+int Fibonaci(int i)
 {
 	if (i == 0)
 	{
@@ -165,10 +165,10 @@ int fibonaci(int i)
 	{
 		return 1;
 	}
-	return fibonaci(i - 1) + fibonaci(i - 2);
+	return Fibonaci(i - 1) + Fibonaci(i - 2);
 }
 
-void bubble_sort(int arr[], int len)
+void BubbleSort(int arr[], int len)
 {
 	if (arr[0] != NULL)
 	{
@@ -188,13 +188,13 @@ void bubble_sort(int arr[], int len)
 	}
 }
 
-void stringDemo() {
+void StringDemo() {
 	char str[] = { 'A', 'B', '\0' };
 	printf("%s", str);
 	printf("%d", strlen(str));
 }
 
-void structDemo()
+void StructDemo()
 {
 	typedef struct Book
 	{

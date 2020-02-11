@@ -1,10 +1,10 @@
 #ifndef GLOBAL_H
 #define GLOBAL_H
 
-void readfileDemo();
-double factorial(unsigned int i);
-int fibonaci(int i);
-void bubble_sort(int arr[], int);
+void ReadfileDemo();
+double Factorial(unsigned int i);
+int Fibonaci(int i);
+void BubbleSort(int arr[], int);
 void PrintMultiplicationTable();
 int FindGcd(int, int);
 int PalindromicNumber(int);

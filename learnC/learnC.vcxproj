@@ -123,15 +123,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="dataStructure.cpp" />
-    <ClCompile Include="learnC++.cpp" />
-    <ClCompile Include="learnC.cpp" />
+    <ClCompile Include="data_structure.cpp" />
+    <ClCompile Include="learn_c++.cpp" />
+    <ClCompile Include="learn_c.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="dataStructure.h" />
-    <ClInclude Include="learnC.h" />
-    <ClInclude Include="learnC++.h" />
+    <ClInclude Include="data_structure.h" />
+    <ClInclude Include="learn_c.h" />
+    <ClInclude Include="learn_C++.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
