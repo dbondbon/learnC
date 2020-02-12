@@ -26,10 +26,10 @@ typedef struct int_sequence_table {
 	int seq_t[MAX_LEN]; // ´æ´¢Êı×é
 }int_tab;
 
-int insert_int_sequence_table(int_tab tab, int val);
-int delete_int_sequence_table(int_tab tab, int index);
-int modify_int_sequence_table(int_tab tab, int val, int index);
-int get_int_sequence_table(int_tab tab, int index);
+int insert_int_sequence_table(int_tab *tab, const int val);
+int delete_int_sequence_table(int_tab *tab, const int index);
+int modify_int_sequence_table(int_tab *tab, const int val, const int index);
+int get_int_sequence_table(const int_tab *tab, const int index);
 int test_int_sequence_table();
 
 #endif
