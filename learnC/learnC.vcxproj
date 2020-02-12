@@ -123,13 +123,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="data_structure.cpp" />
+    <ClCompile Include="data_structure_c.cpp" />
     <ClCompile Include="learn_c++.cpp" />
     <ClCompile Include="learn_c.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="data_structure.h" />
+    <ClInclude Include="data_structure_c.h" />
     <ClInclude Include="learn_c.h" />
     <ClInclude Include="learn_C++.h" />
   </ItemGroup>

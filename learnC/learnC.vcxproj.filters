@@ -18,24 +18,24 @@
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="data_structure.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="learn_c.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="learn_c++.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="data_structure_c.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="data_structure.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="learn_c.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="learn_C++.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="data_structure_c.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
