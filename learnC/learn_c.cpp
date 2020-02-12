@@ -5,7 +5,7 @@
 #include <string.h>
 #include "learn_c.h"
 
-void EnumDemo() 
+void enum_demo() 
 {
 	enum color {
 		RED = 1, GREEN, BLUE
@@ -34,7 +34,7 @@ void EnumDemo()
 	} while (a == 1);
 }
 
-void WritefileDemo()
+void writefile_demo()
 {
 	FILE* fp = NULL;
 	fp = fopen("G:/C-C++/learnC/fileTest.txt", "a+");
@@ -43,7 +43,7 @@ void WritefileDemo()
 	fclose(fp);
 }
 
-void ReadfileDemo()
+void readfile_demo()
 {
 	FILE* fp = NULL;
 	char buffer[255];
@@ -61,7 +61,7 @@ void ReadfileDemo()
 	fclose(fp);
 }
 
-int FindGcd(int n1, int n2)
+int find_gcd(int n1, int n2)
 {
 	int gcd = 1;
 	for (int i = 1; i <= n1 && i <= n2; i++) {
@@ -72,18 +72,18 @@ int FindGcd(int n1, int n2)
 	return gcd;
 }
 
-void FlipString()
+void flip_string()
 {
 	char c;
 	(void)scanf("%c", &c);
 	if (c != '\n') {
-		FlipString();
+		flip_string();
 		printf("%c", c);
 	}
 	return;
 }
 
-void GetcharAndputchar()
+void getchar_and_putchar()
 {
 	int c;
 	printf("请输入一个值：");
@@ -92,14 +92,14 @@ void GetcharAndputchar()
 	putchar(c);
 }
 
-void GetsAndputs() {
+void gets_and_puts() {
 	char str[50];
 	printf("请输入字符串：");
 	gets_s(str);
 	printf("\n %s", str);
 }
 
-void PrintMultiplicationTable()
+void print_multiplication_table()
 {
 	int i = 0;
 	int j = 0;
@@ -111,7 +111,7 @@ void PrintMultiplicationTable()
 	}
 }
 
-int PalindromicNumber(int originalInteger)
+int palindromic_number(int originalInteger)
 {
 	int remainde;
 	int reversedInteger = 0;
@@ -129,7 +129,7 @@ int PalindromicNumber(int originalInteger)
 	}
 }
 
-void PointerDemo() {
+void pointer_demo() {
 	int  var[] = { 10, 100, 200 };
 	int  i, * ptr;
 
@@ -145,17 +145,17 @@ void PointerDemo() {
 }
 
 /*求阶乘*/
-double Factorial(unsigned int i)
+double factorial(unsigned int i)
 {
 	if (i <= 1)
 	{
 		return 1;
 	}
-	return i * Factorial(i - 1);
+	return i * factorial(i - 1);
 }
 
 /*斐波那契数列*/
-int Fibonaci(int i)
+int fibonaci(int i)
 {
 	if (i == 0)
 	{
@@ -165,10 +165,10 @@ int Fibonaci(int i)
 	{
 		return 1;
 	}
-	return Fibonaci(i - 1) + Fibonaci(i - 2);
+	return fibonaci(i - 1) + fibonaci(i - 2);
 }
 
-void BubbleSort(int arr[], int len)
+void bubble_sort(int arr[], int len)
 {
 	if (arr[0] != NULL)
 	{
@@ -188,29 +188,29 @@ void BubbleSort(int arr[], int len)
 	}
 }
 
-void StringDemo() {
+void string_demo() {
 	char str[] = { 'A', 'B', '\0' };
 	printf("%s", str);
 	printf("%d", strlen(str));
 }
 
-void StructDemo()
+void struct_demo()
 {
-	typedef struct Book
+	typedef struct book_s
 	{
 		char author[20];
 		double price;
-	}Book;
-	typedef struct Stu
+	}book_s;
+	typedef struct stu_s
 	{
 		char name[20];
 		int age;
-	}Stu;
-	Stu stu;
+	}stu_s;
+	stu_s stu;
 	stu.age = 21;
 	strcpy_s(stu.name, "aaa");
 	printf("%s的年龄为：%d", stu.name, stu.age);
-	Book book;
+	book_s book;
 	strcpy_s(book.author, "莫言");
 	book.price = 25.0;
 	printf("%s的书要%f元", book.author, book.price);
