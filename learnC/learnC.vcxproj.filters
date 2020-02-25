@@ -27,6 +27,9 @@
     <ClCompile Include="data_structure_c.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="algorithm.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="learn_c.h">
@@ -36,6 +39,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="data_structure_c.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="algorithm.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
