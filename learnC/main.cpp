@@ -1,10 +1,12 @@
 #include<stdio.h>
-#include "data_structure_c.h"
+#include "algorithm.h"
 
 int main()
 {
-
-	int res = test_int_sequence_table();
+	int arr[] = { 1, 2, 3, 4, 5, 6, 7 };
+	int size = 7;
+	int key = 8;
+	int res = binary_search(arr, size, key);
 
 	return 0;
 }
