@@ -85,3 +85,42 @@ int majorityElement(int *nums, int numsSize)
 
 	return res;
 }
+
+struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2) 
+{
+	ListNode* res = NULL;
+	ListNode* left = l1;
+	ListNode* right = l2;
+	if (left == NULL) {
+		return right;
+	}
+	if (right == NULL) {
+		return left;
+	}
+	if (left->val <= right->val) {
+		res = left;
+		left = left->next;
+	} else {
+		res = right;
+		right = right->next;
+	}
+	ListNode* current_res = res;
+	while (left != NULL && right != NULL) {
+		if (left->val <= right->val) {
+			current_res->next = left;
+			current_res = current_res->next;
+			left = left->next;
+		} else {
+			current_res->next = right;
+			current_res = current_res->next;
+			right = right->next;
+		}
+	}
+	if (left != NULL) {
+		current_res->next = left;
+	}
+	if (right != NULL) {
+		current_res->next = right;
+	}
+	return res;
+}

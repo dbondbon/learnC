@@ -1,14 +1,19 @@
 #include<stdio.h>
+#include<stdlib.h>
 #include "algorithm.h"
 
 int main()
 {
-	int nums[] = { 1, 8, 9, 9, 7, 6, 3, 9, 8, 7 };
-	int numsSize = 10;
-
-	int nums2[] = { 2, 3, 1, 1, 1, 3, 2 };
-	int numsSize2 = 7;
-	int res = majorityElement(nums, numsSize);
+	ListNode node3 = { 6, NULL };
+	ListNode node7 = { 5, &node3 };
+	ListNode node2 = { 2, &node7 };
+	ListNode node1 = { 1, &node2 };
+	
+	ListNode node6 = { 4, NULL };
+	ListNode node5 = { 3, &node6 };
+	ListNode node4 = { 1, &node5 };
+	
+	ListNode* res = mergeTwoLists(&node1, &node4);
 
 	return 0;
 }
