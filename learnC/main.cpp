@@ -3,10 +3,12 @@
 
 int main()
 {
-	int arr[] = { 1, 2, 3, 4, 5, 6, 7 };
-	int size = 7;
-	int key = 8;
-	int res = binary_search(arr, size, key);
+	int nums[] = { 1, 8, 9, 9, 7, 6, 3, 9, 8, 7 };
+	int numsSize = 10;
+
+	int nums2[] = { 2, 3, 1, 1, 1, 3, 2 };
+	int numsSize2 = 7;
+	int res = majorityElement(nums, numsSize);
 
 	return 0;
 }

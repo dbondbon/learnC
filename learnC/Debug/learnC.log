@@ -1,2 +1,5 @@
-﻿  main.cpp
+﻿  algorithm.cpp
+G:\C-C++\learnC\learnC\algorithm.cpp(10,8): warning C4244:  “初始化”: 从“double”转换到“int”，可能丢失数据
+G:\C-C++\learnC\learnC\algorithm.cpp(20,12): warning C4244:  “=”: 从“double”转换到“int”，可能丢失数据
+G:\C-C++\learnC\learnC\algorithm.cpp(37,8): warning C4244:  “初始化”: 从“double”转换到“int”，可能丢失数据
   learnC.vcxproj -> G:\C-C++\learnC\Debug\learnC.exe
