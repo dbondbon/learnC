@@ -10,4 +10,6 @@ typedef struct ListNode {
 }ListNode;
 struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2);
 
+int* getLeastNumbers(int* arr, int arrSize, int k, int* returnSize);
+
 #endif
