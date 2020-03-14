@@ -146,3 +146,30 @@ int* getLeastNumbers(int* arr, int arrSize, int k, int* returnSize)
 	*returnSize = k;
 	return res;
 }
+
+int lengthOfLIS(int* nums, int numsSize) 
+{
+	int res = 0;
+	if (numsSize == 0) {
+		return res;
+	}
+	int *dp = (int*)malloc(sizeof(int) * numsSize);
+	dp[0] = 1;
+	for (int i = 1; i < numsSize; i++) {
+		int j = 0;
+		int temp = 0;
+		for (j = i - 1; j >= 0; j--) {
+			if (nums[j] < nums[i] && temp < dp[j]) {
+				temp = dp[j];
+			}	
+		}
+		dp[i] = temp + 1;
+	}
+	for (int i = 0; i < numsSize; i++) {
+		if (res < dp[i]) {
+			res = dp[i];
+		}
+	}
+	free(dp);
+	return res;
+}
