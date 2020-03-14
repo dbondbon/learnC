@@ -1,3 +1,4 @@
+#include <stdlib.h>
 #include "data_structure_c.h"
 
 int insert_int_sequence_table(int_tab *tab, int val)
@@ -62,5 +63,81 @@ int test_int_sequence_table()
 	res = get_int_sequence_table(&tab, 5);
 	CHECK_RES(res);
 
+	return RES_SUCCESS;
+}
+
+/** Initialize your data structure here. */
+MyStack* myStackCreate() 
+{
+	MyStack *newStack = (MyStack *)malloc(sizeof(MyStack));
+	newStack->size = 0;
+	return newStack;
+}
+
+/** Push element x onto stack. */
+void myStackPush(MyStack* obj, int x) 
+{
+	ListNode *new_element = (ListNode *)malloc(sizeof(ListNode));
+	new_element->val = x;
+	if (obj->size == 0) {
+		new_element->next = NULL;
+		obj->first = new_element;
+		obj->size++;
+	} else {
+		new_element->next = obj->first;
+		obj->first = new_element;
+		obj->size++;
+	}
+}
+
+/** Removes the element on top of the stack and returns that element. */
+int myStackPop(MyStack* obj) 
+{
+	int res = obj->first->val;
+	ListNode* temp = obj->first;
+	obj->first = obj->first->next;
+	obj->size--;
+	free(temp);
+	return res;
+}
+
+/** Get the top element. */
+int myStackTop(MyStack* obj) 
+{
+	return obj->first->val;
+}
+
+/** Returns whether the stack is empty. */
+bool myStackEmpty(MyStack* obj) 
+{
+	return obj->size == 0;
+}
+
+void myStackFree(MyStack* obj) 
+{
+	while (obj->size != 0) {
+		ListNode* temp = obj->first;
+		obj->first = obj->first->next;
+		obj->size--;
+		free(temp);
+	}
+	free(obj);
+}
+
+int test_myStack()
+{
+	MyStack* myStack = myStackCreate();
+	int is_empty = myStackEmpty(myStack);
+	myStackPush(myStack, 2);
+	myStackPush(myStack, 5);
+	myStackPush(myStack, 8);
+	is_empty = myStackEmpty(myStack);
+	int top_element = myStackTop(myStack);
+	int pop_element = myStackPop(myStack);
+	pop_element = myStackPop(myStack);
+	pop_element = myStackPop(myStack);
+	myStackPush(myStack, 1);
+	myStackPush(myStack, 3);
+	myStackFree(myStack);
 	return RES_SUCCESS;
 }

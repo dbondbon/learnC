@@ -1,6 +1,8 @@
 #ifndef DATA_STUCTURE_C_H
 #define DATA_STUCTURE_C_H
 
+#include "algorithm.h"
+
 #define MAX_LEN   1000 // 最大数据长度
 #define RES_TRUE    1
 #define RES_FALSE   0
@@ -12,7 +14,6 @@
 			return RES_FAIL;        \
 		}                           \
 	} while (0);
-
 
 /**
  * 使用C语言实现简单整型顺序表
@@ -31,5 +32,33 @@ int delete_int_sequence_table(int_tab *tab, const int index);
 int modify_int_sequence_table(int_tab *tab, const int val, const int index);
 int get_int_sequence_table(const int_tab *tab, const int index);
 int test_int_sequence_table();
+
+
+/**
+ * 实现链表实现栈的基本操作：
+ * push(x) -- 元素 x 入栈
+ * pop() -- 移除栈顶元素
+ * top() -- 获取栈顶元素
+ * empty() -- 返回栈是否为空
+ */
+typedef struct {
+	ListNode *first;
+	int size;
+} MyStack;
+
+/** Initialize your data structure here. */
+MyStack* myStackCreate();
+/** Push element x onto stack. */
+void myStackPush(MyStack* obj, int x);
+/** Removes the element on top of the stack and returns that element. */
+int myStackPop(MyStack* obj);
+/** Get the top element. */
+int myStackTop(MyStack* obj);
+/** Returns whether the stack is empty. */
+bool myStackEmpty(MyStack* obj);
+/** Free the stack. */
+void myStackFree(MyStack* obj);
+/** Test the stack. */
+int test_myStack();
 
 #endif
