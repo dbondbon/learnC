@@ -105,3 +105,66 @@ char *compressString(char *S)
 	}
 	return res;
 }
+
+int countCharacters(char **words, int wordsSize, char *chars) 
+{
+	// ¸øcharsÅÅÐò(Ã°ÅÝ)
+	int chars_len = strlen(chars);
+	int temp = 0;
+	for (int i = 0; i < chars_len - 1; i++) {
+		for (int j = 0; j < chars_len - i - 1; j++) {
+			if (chars[j] > chars[j + 1]) {
+				temp = chars[j + 1];
+				chars[j + 1] = chars[j];
+				chars[j] = temp;
+			}
+		}
+	}
+	int res = 0;
+	for (int i = 0; i < wordsSize; i++) {
+		int word_len = strlen(words[i]);
+		if (word_len > chars_len) {
+			continue;
+		}
+		// ¸øword[i]ÅÅÐò(Ã°ÅÝ)
+		for (int m = 0; m < word_len - 1; m++) {
+			for (int n = 0; n < word_len - m - 1; n++) {
+				if (words[i][n] > words[i][n + 1]) {
+					temp = words[i][n + 1];
+					words[i][n + 1] = words[i][n];
+					words[i][n] = temp;
+				}
+			}
+		}
+		// ±È¶Ô
+		int w_index = 0;
+		int c_index = 0;
+		int contain_flag = 1;
+		for (w_index = 0; w_index < word_len; w_index++) {
+			int find_flag = 0;
+			if (words[i][w_index] == chars[c_index]) {
+				c_index++;
+			} else {
+				while (words[i][w_index] > chars[c_index]) {
+					c_index++;
+					if (c_index >= chars_len) {
+						break;
+					}
+					if (words[i][w_index] == chars[c_index]) {
+						c_index++;
+						find_flag = 1;
+						break;
+					}
+				}
+				if (!find_flag) {
+					contain_flag = 0;
+					break;
+				}
+			}
+		}
+		if (contain_flag) {
+			res = res + word_len;
+		}
+	}
+	return res;
+}

@@ -4,12 +4,19 @@
 
 int main()
 {
-	char S[] = "";
-	int i = 'A';
-	int j = 'a';
+	char w1[] = "acdtuyj";
+	char w2[] = "tde";
+	char w3[] = "agc";
+	int wordsSize = 3;
+	char** words = (char**)malloc(sizeof(char*) * wordsSize);
+	char chars[] = "defgabc";
+	words[0] = w1;
+	words[1] = w2;
+	words[2] = w3;
 
-	char *res = compressString(S);
-	//free(res);
+	int res = countCharacters(words, wordsSize, chars);
+
+	free(words);
 
 	return 0;
 }
