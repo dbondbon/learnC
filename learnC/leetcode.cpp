@@ -168,3 +168,61 @@ int countCharacters(char **words, int wordsSize, char *chars)
 	}
 	return res;
 }
+
+int countCharacters_simplify(char** words, int wordsSize, char* chars)
+{
+	int res = 0;
+	int cmp[26] = {0};
+	int temp[26];
+	int chars_len = strlen(chars);
+	for (int i = 0; i < chars_len; i++) {
+		int index = chars[i] - 'a';
+		cmp[index]++;
+	}
+	for (int i = 0; i < 26; i++) {
+		temp[i] = cmp[i];
+	}
+	for (int i = 0; i < wordsSize; i++) {
+		int flag = 1;
+		int word_len = strlen(words[i]);
+		if (word_len <= chars_len) {
+			for (int j = 0; j < word_len; j++) {
+				int index = words[i][j] - 'a';
+				if (temp[index] == 0) {
+					flag = 0;
+					break;
+				}
+				temp[index]--;
+			}
+			if (flag) {
+				res = res + word_len;
+			}
+			for (int i = 0; i < 26; i++) {
+				temp[i] = cmp[i];
+			}
+		}
+	}
+	return res;
+}
+
+bool isRectangleOverlap(int *rec1, int rec1Size, int *rec2, int rec2Size) 
+{
+	// 找出所有不重叠的情况
+	// 右
+	if (rec2[0] >= rec1[2]) {
+		return 0;
+	}
+	// 上 
+	if (rec2[1] >= rec1[3]) {
+		return 0;
+	}
+	// 左
+	if (rec2[2] <= rec1[0]) {
+		return 0;
+	}
+	// 下
+	if (rec2[3] <= rec1[1]) {
+		return 0;
+	}
+	return 1;
+}
