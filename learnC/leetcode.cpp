@@ -226,3 +226,44 @@ bool isRectangleOverlap(int *rec1, int rec1Size, int *rec2, int rec2Size)
 	}
 	return 1;
 }
+
+double findMedianSortedArrays(int *nums1, int nums1Size, int *nums2, int nums2Size) 
+{
+	double res;
+	int *temp = (int*)malloc(sizeof(int) * (nums1Size + nums2Size));
+	int i = 0;
+	int j = 0;
+	int index = 0;
+	while (i < nums1Size  && j < nums2Size) {
+		if (nums1[i] < nums2[j]) {
+			temp[index] = nums1[i];
+			i++;
+			index++;
+		} else {
+			temp[index] = nums2[j];
+			j++;
+			index++;
+		}
+	}
+	if (i != nums1Size) {
+		for (int m = i; m < nums1Size; m++) {
+			temp[index] = nums1[m];
+			index++;
+		}
+	}
+	if (j != nums2Size) {
+		for (int m = j; m < nums2Size; m++) {
+			temp[index] = nums2[m];
+			index++;
+		}
+	}
+	int k = (nums1Size + nums2Size) / 2;
+	if ((nums1Size + nums2Size) % 2 != 0) {
+		res = temp[k];
+	} else {
+		double t = temp[k];
+		res = (temp[k - 1] + t) / 2;
+	}
+	free(temp);
+	return res;
+}
