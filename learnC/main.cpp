@@ -4,12 +4,9 @@
 
 int main()
 {
-	int nums1[] = { 1, 2 };
-	int nums1Size = 2;
-	int nums2[] = { 3, 4 };
-	int nums2Size = 2;
+	char s[] = "bb";
 
-	double res = findMedianSortedArrays(nums1, nums1Size, nums2, nums2Size);
+	int res = longestPalindrome(s);
 
 	return 0;
 }

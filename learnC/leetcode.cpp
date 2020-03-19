@@ -267,3 +267,52 @@ double findMedianSortedArrays(int *nums1, int nums1Size, int *nums2, int nums2Si
 	free(temp);
 	return res;
 }
+
+int longestPalindrome(char *s) 
+{
+	int res = 0;
+	int len = strlen(s);
+	if (len == 0) {
+		return 0;
+	}
+	if (len == 1) {
+		return 1;
+	}
+	int temp1[26] = { 0 }; // A - Z
+	int temp2[26] = { 0 }; // a - z
+	for (int i = 0; i < len; i++) {
+		if (s[i] < 97) {
+			int index = s[i] - 65;
+			temp1[index]++;
+		} else {
+			int index = s[i] - 97;
+			temp2[index]++;
+		}
+	}
+	int flag = 0;
+	for (int i = 0; i < 26; i++) {
+		if (temp1[i] % 2 == 0) {
+			res = res + temp1[i];
+		} else {
+			if (temp1[i] > 1) {
+				res = res + temp1[i] - 1;
+			}
+			flag = 1;
+		}
+	}
+	for (int i = 0; i < 26; i++) {
+		if (temp2[i] % 2 == 0) {
+			res = res + temp2[i];
+		}
+		else {
+			if (temp2[i] > 1) {
+				res = res + temp2[i] - 1;
+			}
+			flag = 1;
+		}
+	}
+	if (flag) {
+		res++;
+	}
+	return res;
+}
