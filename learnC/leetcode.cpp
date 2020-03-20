@@ -316,3 +316,29 @@ int longestPalindrome(char *s)
 	}
 	return res;
 }
+
+int *getLeastNumbers(int *arr, int arrSize, int k, int *returnSize) 
+{
+	*returnSize = k;
+	int *res = (int*)malloc(sizeof(int) * k);
+	int i = 0;
+	for (i = 0; i < k; i++) {
+		int  flag = 0;
+		for (int j = arrSize - 1; j > i; j--) {
+			if (arr[j] < arr[j - 1]) {
+				int temp = arr[j];
+				arr[j] = arr[j - 1];
+				arr[j - 1] = temp;
+				flag = 1;
+			}
+		}
+		res[i] = arr[i];
+		if (!flag) {
+			break;
+		}
+	}
+	for (int m = i; m < k; m++) {
+		res[m] = arr[m];
+	}
+	return res;
+}
