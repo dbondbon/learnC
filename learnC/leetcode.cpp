@@ -342,3 +342,27 @@ int *getLeastNumbers(int *arr, int arrSize, int k, int *returnSize)
 	}
 	return res;
 }
+
+bool canMeasureWater(int x, int y, int z) 
+{
+	if (x < y) {
+		int temp = x;
+		x = y;
+		y = temp;
+	}
+	if (x + y < z) {
+		return 0;
+	} 
+	if (x == 0 || y == 0) {
+		return z == 0 || x + y == z;
+	}
+	int m = x;
+	int n = y;
+	int r = m % n;
+	while (r != 0) {
+		m = n;
+		n = r;
+		r = m % n;
+	}
+	return z % n == 0;
+}

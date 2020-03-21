@@ -4,13 +4,11 @@
 
 int main()
 {
-	int arr[] = { 1 };
-	int arrSize = 1;
-	int k = 1;
-	int returnSize = 0;
+	int x = 1;
+	int y = 1;
+	int z = 12;
 
-	int *res = getLeastNumbers(arr, arrSize, k, &returnSize);
-	free(res);
+	bool res = canMeasureWater(x, y, z);
 
 	return 0;
 }
