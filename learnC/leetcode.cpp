@@ -366,3 +366,89 @@ bool canMeasureWater(int x, int y, int z)
 	}
 	return z % n == 0;
 }
+
+int minIncrementForUnique(int *A, int ASize) 
+{
+	unsigned int res = 0;
+	int max = 40000;
+	int exist[40000] = { 0 };
+	for (int i = 0; i < ASize; i++) {
+		int index = A[i];
+		exist[index] = exist[index] + 1;
+	}
+	for (int i = 0; i < 40000; i++) {
+		int j = i + 1;
+		if (exist[i] > 1) {
+			if (i == 39999) {
+				while (exist[i] > 1) {
+					res = res + max - i;
+					exist[i] = exist[i] - 1;
+					max = max + 1;
+				}
+			} else {
+				while (exist[i] > 1) {
+					if (j < 40000 && !exist[j]) {
+						res = res + j - i;
+						exist[j] = 1;
+						exist[i] = exist[i] - 1;
+					} else if (j >= 40000) {
+						res = res + max - i;
+						exist[i] = exist[i] - 1;
+						max = max + 1;
+					}
+					j++;
+				}
+			}
+		}
+	}
+	return res;
+}
+
+static int get_target_val(int* A, int ASize, int index, int* last_index, int last_target)
+{
+	int temp_index = *last_index;
+	int target_val = last_target + 1;
+	while (target_val < A[index] || target_val <= A[temp_index] || (temp_index < ASize - 1 && target_val >= A[temp_index + 1])) {
+		if (target_val <= A[temp_index]) {
+			target_val++;
+		}
+		else {
+			temp_index++;
+		}
+	}
+	*last_index = temp_index;
+	return target_val;
+}
+
+int minIncrementForUnique_my(int* A, int ASize) {
+	int res = 0;
+	// 1. 排序（冒泡）
+	for (int i = 0; i < ASize - 1; i++) {
+		for (int j = 0; j < ASize - i - 1; j++) {
+			if (A[j] > A[j + 1]) {
+				int temp = A[j];
+				A[j] = A[j + 1];
+				A[j + 1] = temp;
+			}
+		}
+	}
+	// 2. 遍历寻找重复值，计算每个重复值的 i_move
+	int target_val = 0;
+	int* last_index = (int*)malloc(sizeof(int));
+	*last_index = 0;
+	for (int i = 1; i < ASize; i++) {
+		if (A[i] == A[i - 1]) {
+			target_val = get_target_val(A, ASize, i, last_index, target_val);
+			int i_move = 0;
+			if (target_val > A[i]) {
+				i_move = target_val - A[i];
+			}
+			else {
+				i_move = A[i] - target_val;
+			}
+			res = res + i_move;
+		}
+	}
+	free(last_index);
+	return res;
+}

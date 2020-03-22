@@ -14,5 +14,7 @@ double findMedianSortedArrays(int *nums1, int nums1Size, int *nums2, int nums2Si
 int longestPalindrome(char *s);
 int *getLeastNumbers(int *arr, int arrSize, int k, int *returnSize);
 bool canMeasureWater(int x, int y, int z);
+int minIncrementForUnique(int *A, int ASize);
+int minIncrementForUnique_my(int* A, int ASize);
 
 #endif
