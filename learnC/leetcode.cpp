@@ -439,16 +439,30 @@ int minIncrementForUnique_my(int* A, int ASize) {
 	for (int i = 1; i < ASize; i++) {
 		if (A[i] == A[i - 1]) {
 			target_val = get_target_val(A, ASize, i, last_index, target_val);
-			int i_move = 0;
-			if (target_val > A[i]) {
-				i_move = target_val - A[i];
-			}
-			else {
-				i_move = A[i] - target_val;
-			}
+			int i_move = target_val - A[i];
 			res = res + i_move;
 		}
 	}
 	free(last_index);
+	return res;
+}
+
+ListNode* middleNode(ListNode *head) 
+{
+	ListNode* cur_node = head;
+	ListNode* next_node = head->next;
+	int node_count = 1;
+	while (next_node != NULL) {
+		cur_node = next_node;
+		next_node = cur_node->next;
+		node_count++;
+	}
+	int target = 0;
+	target = node_count / 2;
+	ListNode* res = head;
+	while (target != 0) {
+		res = res->next;
+		target--;
+	}
 	return res;
 }

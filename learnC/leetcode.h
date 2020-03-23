@@ -5,6 +5,8 @@
 #ifndef LEETCODE_H
 #define LEETCODE_H
 
+#include "algorithm.h"
+
 int maxAreaOfIsland(int **grid, int gridSize, int *gridColSize);
 char *compressString(char *S);
 int countCharacters(char **words, int wordsSize, char *chars);
@@ -16,5 +18,5 @@ int *getLeastNumbers(int *arr, int arrSize, int k, int *returnSize);
 bool canMeasureWater(int x, int y, int z);
 int minIncrementForUnique(int *A, int ASize);
 int minIncrementForUnique_my(int* A, int ASize);
-
+struct ListNode* middleNode(ListNode* head);
 #endif
