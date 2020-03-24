@@ -19,4 +19,5 @@ bool canMeasureWater(int x, int y, int z);
 int minIncrementForUnique(int *A, int ASize);
 int minIncrementForUnique_my(int* A, int ASize);
 struct ListNode* middleNode(ListNode* head);
+int massage(int *nums, int numsSize);
 #endif
