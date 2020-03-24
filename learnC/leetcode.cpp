@@ -496,3 +496,29 @@ int massage(int *nums, int numsSize)
 	free(dp);
 	return res;
 }
+
+struct ListNode *reverseList(ListNode* head) 
+{
+	int count = 0;
+	ListNode *cur = head;
+	while (cur != NULL) {
+		count++;
+		cur = cur->next;
+	}
+	int *temp = (int*)malloc(sizeof(int) * count);
+	cur = head;
+	int i = 0;
+	while (cur != NULL) {
+		temp[i] = cur->val;
+		cur = cur->next;
+		i++;
+	}
+	cur = head;
+	i = 0;
+	while (cur != NULL) {
+		cur->val = temp[count - i - 1];
+		cur = cur->next;
+		i++;
+	}
+	return head;
+}
