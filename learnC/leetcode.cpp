@@ -522,3 +522,55 @@ struct ListNode *reverseList(ListNode* head)
 	}
 	return head;
 }
+
+static void surfaceArea_find_more(int** grid, int gridSize, int* gridColSize, int i, int j, int* res)
+{
+	// up
+	if (i != 0 && grid[i - 1][j] > 0) {
+		if (grid[i - 1][j] > grid[i][j]) {
+			*res = *res - grid[i][j]; 
+		} else {
+			*res = *res - grid[i - 1][j];
+		}
+	}
+	// down
+	if (i != 49 && i + 1 < gridSize && grid[i + 1][j] > 0) {
+		if (grid[i + 1][j] > grid[i][j]) {
+			*res = *res - grid[i][j];
+		} else {
+			*res = *res - grid[i + 1][j];
+		}
+	}
+	// left
+	if (j != 0 && grid[i][j - 1] > 0) {
+		if (grid[i][j - 1] > grid[i][j]) {
+			*res = *res - grid[i][j];
+		}
+		else {
+			*res = *res - grid[i][j - 1];
+		}
+	}
+	// right
+	if (j != 49 && j + 1 < *gridColSize && grid[i][j + 1] > 0) {
+		if (grid[i][j + 1] > grid[i][j]) {
+			*res = *res - grid[i][j];
+		}
+		else {
+			*res = *res - grid[i][j + 1];
+		}
+	}
+}
+
+int surfaceArea(int** grid, int gridSize, int* gridColSize) 
+{
+	int res = 0;
+	for (int i = 0; i < gridSize; i++) {
+		for (int j = 0; j < *gridColSize; j++) {
+			if (grid[i][j] > 0) {
+				res = res + grid[i][j] * 6 - (grid[i][j] - 1) * 2;
+				surfaceArea_find_more(grid, gridSize, gridColSize, i, j, &res);
+			}
+		}
+	}
+	return res;
+}

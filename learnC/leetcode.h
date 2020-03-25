@@ -21,4 +21,5 @@ int minIncrementForUnique_my(int* A, int ASize);
 struct ListNode* middleNode(ListNode* head);
 int massage(int *nums, int numsSize);
 struct ListNode* reverseList(ListNode* head);
+int surfaceArea(int** grid, int gridSize, int* gridColSize);
 #endif
