@@ -574,3 +574,24 @@ int surfaceArea(int** grid, int gridSize, int* gridColSize)
 	}
 	return res;
 }
+
+void merge(int* A, int ASize, int m, int* B, int BSize, int n) 
+{
+	for (int i = 0; i < n; i++) {
+		A[m + i] = B[i];
+	}
+	int flag = 0;
+	for (int i = 0; i < ASize - 1; i++) {
+		for (int j = 0; j < ASize - i - 1; j++) {
+			if (A[j] > A[j + 1]) {
+				int temp = A[j];
+				A[j] = A[j + 1];
+				A[j + 1] = temp;
+				flag = 1;
+			}
+		}
+		if (!flag) {
+			break;
+		}
+	}
+}
