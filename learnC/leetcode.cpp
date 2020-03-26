@@ -595,3 +595,66 @@ void merge(int* A, int ASize, int m, int* B, int BSize, int n)
 		}
 	}
 }
+
+int numRookCaptures(char** board, int boardSize, int* boardColSize) 
+{
+	int res = 0;
+	// find R
+	for (int i = 0; i < boardSize; i++) {
+		for (int j = 0; j < *boardColSize; j++) {
+			if (board[i][j] == 'R') {
+				int i_temp, j_temp;
+				// up
+				i_temp = i - 1;
+				while (i_temp >= 0) {
+					if (board[i_temp][j] == '.') {
+						i_temp--;
+					} else if (board[i_temp][j] == 'p') {
+						res++;
+						break;
+					} else {
+						break;
+					}
+				}
+				// down
+				i_temp = i + 1;
+				while (i_temp < boardSize) {
+					if (board[i_temp][j] == '.') {
+						i_temp++;
+					} else if (board[i_temp][j] == 'p') {
+						res++;
+						break;
+					} else {
+						break;
+					}
+				}
+				// left
+				j_temp = j - 1;
+				while (j_temp >= 0) {
+					if (board[i][j_temp] == '.') {
+						j_temp--;
+					} else if (board[i][j_temp] == 'p') {
+						res++;
+						break;
+					} else {
+						break;
+					}
+				}
+				// right
+				j_temp = j + 1;
+				while (j_temp < *boardColSize) {
+					if (board[i][j_temp] == '.') {
+						j_temp++;
+					} else if (board[i][j_temp] == 'p') {
+						res++;
+						break;
+					} else {
+						break;
+					}
+				}
+				return res;
+			}
+		}
+	}
+	return res;
+}

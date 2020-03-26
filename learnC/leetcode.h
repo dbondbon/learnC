@@ -23,4 +23,6 @@ int massage(int *nums, int numsSize);
 struct ListNode* reverseList(ListNode* head);
 int surfaceArea(int** grid, int gridSize, int* gridColSize);
 void merge(int* A, int ASize, int m, int* B, int BSize, int n);
+int numRookCaptures(char** board, int boardSize, int* boardColSize);
+
 #endif
