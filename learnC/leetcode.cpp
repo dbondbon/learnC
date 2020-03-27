@@ -705,3 +705,31 @@ int orangesRotting(int** grid, int gridSize, int* gridColSize)
 	res = k - 3;
 	return res;
 }
+
+bool hasGroupsSizeX(int* deck, int deckSize) 
+{
+	int temp[10000] = { 0 };
+	int index = 0;
+	int x = 0;
+	for (int i = 0; i < deckSize; i++) {
+		index = deck[i];
+		temp[index]++;
+	}
+	for (x = 10000; x >= 2; x--) {
+		int flag = 1;
+		for (int i = 0; i < 10000; i++) {
+			if (temp[i] == 1) {
+				return 0;
+			} else if (temp[i] % x == 0) {
+				continue;
+			} else {
+				flag = 0;
+				break;
+			}
+		}
+		if (flag) {
+			return 1;
+		}
+	}
+	return 0;
+}
