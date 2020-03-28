@@ -26,5 +26,6 @@ void merge(int* A, int ASize, int m, int* B, int BSize, int n);
 int numRookCaptures(char** board, int boardSize, int* boardColSize);
 int orangesRotting(int** grid, int gridSize, int* gridColSize);
 bool hasGroupsSizeX(int* deck, int deckSize);
+int minimumLengthEncoding(char** words, int wordsSize);
 
 #endif

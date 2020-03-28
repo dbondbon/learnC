@@ -733,3 +733,53 @@ bool hasGroupsSizeX(int* deck, int deckSize)
 	}
 	return 0;
 }
+
+int minimumLengthEncoding(char** words, int wordsSize) 
+{
+	int res = 0;
+	int words_indexes[2000] = {0};
+	words_indexes[0] = 1;
+	int len = strlen(words[0]);
+	res = len + 1;
+	for (int i = 1; i < wordsSize; i++) {
+		int flag = 0;
+		int len1 = strlen(words[i]);
+		for (int j = 0; j < i; j++) {
+			if (words_indexes[j] == 1) {
+				int len2 = strlen(words[j]);
+				if (len1 > len2) {
+					for (int k = len2 - 1; k >= 0; k--) {
+						if (words[j][k] != words[i][k + len1 - len2]) {
+							break;
+						}
+						if (k == 0) {
+							flag = 1;
+						}
+					}
+				} else {
+					for (int k = len1 - 1; k >= 0; k--) {
+						if (words[i][k] != words[j][k + len2 - len1]) {
+							break;
+						}
+						if (k == 0) {
+							flag = 1;
+						}
+					}
+				}
+				if (flag) {
+					if (len1 > len2) {
+						res = res - len2 + len1;
+						words_indexes[i] = 1;
+						words_indexes[j] = 0;	
+					}
+					break;
+				}
+			}
+		}
+		if (!flag) {
+			res = res + len1 + 1;
+			words_indexes[i] = 1;
+		}
+	}
+	return res;
+}
