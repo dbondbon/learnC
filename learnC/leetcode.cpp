@@ -783,3 +783,25 @@ int minimumLengthEncoding(char** words, int wordsSize)
 	}
 	return res;
 }
+
+int* distributeCandies(int candies, int num_people, int* returnSize) 
+{
+	*returnSize = num_people;
+	int* res = (int*)malloc(sizeof(int) * num_people);
+	for (int i = 0; i < num_people; i++) {
+		res[i] = 0;
+	}
+	int k_people = 0;
+	int temp_candies = 1;
+	while (candies >= temp_candies) {
+		res[k_people] = res[k_people] + temp_candies;
+		k_people++;
+		if (k_people == num_people) {
+			k_people = 0;
+		}
+		candies = candies - temp_candies;
+		temp_candies++;
+	}
+	res[k_people] = res[k_people] + candies;
+	return res;
+}

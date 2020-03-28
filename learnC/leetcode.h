@@ -27,5 +27,6 @@ int numRookCaptures(char** board, int boardSize, int* boardColSize);
 int orangesRotting(int** grid, int gridSize, int* gridColSize);
 bool hasGroupsSizeX(int* deck, int deckSize);
 int minimumLengthEncoding(char** words, int wordsSize);
+int* distributeCandies(int candies, int num_people, int* returnSize);
 
 #endif
