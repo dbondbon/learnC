@@ -794,14 +794,50 @@ int* distributeCandies(int candies, int num_people, int* returnSize)
 	int k_people = 0;
 	int temp_candies = 1;
 	while (candies >= temp_candies) {
-		res[k_people] = res[k_people] + temp_candies;
+		res[k_people % num_people] = res[k_people % num_people] + temp_candies;
 		k_people++;
-		if (k_people == num_people) {
-			k_people = 0;
-		}
 		candies = candies - temp_candies;
 		temp_candies++;
 	}
-	res[k_people] = res[k_people] + candies;
+	res[k_people % num_people] = res[k_people % num_people] + candies;
 	return res;
+}
+
+int maxDistance(int** grid, int gridSize, int* gridColSize) 
+{
+	int k = 2; // 填海代数
+	int flag = 0;
+	do {
+		flag = 0;
+		for (int i = 0; i < gridSize; i++) {
+			for (int j = 0; j < *gridColSize; j++) {
+				if (grid[i][j] == (k - 1)) {
+					// 上
+					if (i > 0 && grid[i - 1][j] == 0) {
+						grid[i - 1][j] = k;
+						flag = 1;
+					}
+					// 下
+					if (i < gridSize - 1 && grid[i + 1][j] == 0) {
+						grid[i + 1][j] = k;
+						flag = 1;
+					}
+					// 左
+					if (j > 0 && grid[i][j - 1] == 0) {
+						grid[i][j - 1] = k;
+						flag = 1;
+					}
+					// 右
+					if (j < *gridColSize - 1 && grid[i][j + 1] == 0) {
+						grid[i][j + 1] = k;
+						flag = 1;
+					}
+				}
+			}
+		}
+		if (flag) {
+			k++;
+		}
+	} while (flag);
+	return	k == 2 ? -1 : k - 2;
 }
