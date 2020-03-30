@@ -841,3 +841,19 @@ int maxDistance(int** grid, int gridSize, int* gridColSize)
 	} while (flag);
 	return	k == 2 ? -1 : k - 2;
 }
+
+int** findContinuousSequence(int target, int* returnSize, int** returnColumnSizes) 
+{
+	*returnSize = 3;
+	int **returnColumnSizes_2 = (int **)malloc(sizeof(int) * 6);
+	int **res = (int**)malloc(sizeof(int) * 6);
+	return res;
+}
+
+int lastRemaining(int n, int m) 
+{
+	int res = 0;
+	for (int i = 2; i != n + 1; i++)
+		res = (res + m) % i;
+	return res;
+}

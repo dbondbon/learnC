@@ -29,5 +29,7 @@ bool hasGroupsSizeX(int* deck, int deckSize);
 int minimumLengthEncoding(char** words, int wordsSize);
 int* distributeCandies(int candies, int num_people, int* returnSize);
 int maxDistance(int** grid, int gridSize, int* gridColSize);
+int** findContinuousSequence(int target, int* returnSize, int** returnColumnSizes);
+int lastRemaining(int n, int m);
 
 #endif
