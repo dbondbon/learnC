@@ -864,7 +864,6 @@ static void quick_sort(int* nums,int i, int j)
 		int k = nums[i];
 		int temp_i = i + 1;
 		int temp_j = j;
-		int temp = 0;
 		while (true) {
 			while (temp_i <= j && nums[temp_i] < k) {
 				temp_i++;
@@ -873,7 +872,7 @@ static void quick_sort(int* nums,int i, int j)
 				temp_j--;
 			}
 			if (temp_i < temp_j) {
-				temp = nums[temp_i];
+				int temp = nums[temp_i];
 				nums[temp_i] = nums[temp_j];
 				nums[temp_j] = temp;
 			} else {
@@ -884,6 +883,22 @@ static void quick_sort(int* nums,int i, int j)
 		nums[temp_j] = k;
 		quick_sort(nums, i, temp_j - 1);
 		quick_sort(nums, temp_j + 1, j);
+	}
+}
+
+static void sortArray_sort(int* nums, int numsSize)
+{
+	int temp[100001] = { 0 };
+	for (int i = 0; i < numsSize; i++) {
+		int index = nums[i] + 50000;
+		temp[index]++;
+	}
+	int index = 0;
+	for (int i = 0; i < 100001; i++) {
+		while (temp[i] > 0) {
+			nums[index++] = i - 50000;
+			temp[i]--;
+		}
 	}
 }
 
