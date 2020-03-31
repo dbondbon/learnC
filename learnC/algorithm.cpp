@@ -125,7 +125,7 @@ struct ListNode* mergeTwoLists(struct ListNode* l1, struct ListNode* l2)
 	return res;
 }
 
-int* getLeastNumbers(int* arr, int arrSize, int k, int* returnSize) 
+int* getLeastNumbers_other(int* arr, int arrSize, int k, int* returnSize) 
 {
 	int *res = (int *)malloc(sizeof(int) * k);
 	int min_val, temp;
