@@ -857,3 +857,39 @@ int lastRemaining(int n, int m)
 		res = (res + m) % i;
 	return res;
 }
+
+static void quick_sort(int* nums,int i, int j)
+{
+	if (i < j) {
+		int k = nums[i];
+		int temp_i = i + 1;
+		int temp_j = j;
+		int temp = 0;
+		while (true) {
+			while (temp_i <= j && nums[temp_i] < k) {
+				temp_i++;
+			}
+			while (temp_j >= i && nums[temp_j] > k) {
+				temp_j--;
+			}
+			if (temp_i < temp_j) {
+				temp = nums[temp_i];
+				nums[temp_i] = nums[temp_j];
+				nums[temp_j] = temp;
+			} else {
+				break;
+			}
+		}
+		nums[i] = nums[temp_j];
+		nums[temp_j] = k;
+		quick_sort(nums, i, temp_j - 1);
+		quick_sort(nums, temp_j + 1, j);
+	}
+}
+
+int* sortArray(int* nums, int numsSize, int* returnSize) 
+{
+	*returnSize = numsSize;
+	quick_sort(nums, 0, numsSize - 1);
+	return nums;
+}
