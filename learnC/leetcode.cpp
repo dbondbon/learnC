@@ -875,6 +875,8 @@ static void quick_sort(int* nums,int i, int j)
 				int temp = nums[temp_i];
 				nums[temp_i] = nums[temp_j];
 				nums[temp_j] = temp;
+				temp_i++;
+				temp_j--;
 			} else {
 				break;
 			}
