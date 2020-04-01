@@ -32,5 +32,6 @@ int maxDistance(int** grid, int gridSize, int* gridColSize);
 int** findContinuousSequence(int target, int* returnSize, int** returnColumnSizes);
 int lastRemaining(int n, int m);
 int* sortArray(int* nums, int numsSize, int* returnSize);
+int* maxDepthAfterSplit(char* seq, int* returnSize);
 
 #endif
