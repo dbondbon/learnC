@@ -947,3 +947,57 @@ int* maxDepthAfterSplit(char* seq, int* returnSize)
 	}
 	return res;
 }
+
+void gameOfLife(int** board, int boardSize, int* boardColSize) 
+{
+	// 规定状态 活->死 -1 活->活 1 死->活 2 死->死 0
+	for (int i = 0; i < boardSize; i++) {
+		for (int j = 0; j < *boardColSize; j++) {
+			// 计算周围活细胞数量
+			int count = 0;
+			if (i > 0 && (board[i - 1][j] == 1 || board[i - 1][j] == -1)) {
+				count++;
+			}
+			if (i > 0 && j < *boardColSize - 1  && (board[i - 1][j + 1] == 1 || board[i - 1][j + 1] == -1)) {
+				count++;
+			}
+			if (j < *boardColSize - 1 && (board[i][j + 1] == 1 || board[i][j + 1] == -1)) {
+				count++;
+			}
+			if (i < boardSize - 1 && j < *boardColSize - 1 && (board[i + 1][j + 1] == 1 || board[i + 1][j + 1] == -1)) {
+				count++;
+			}
+			if (i < boardSize - 1 && (board[i + 1][j] == 1 || board[i + 1][j] == -1)) {
+				count++;
+			}
+			if (i < boardSize - 1 && j > 0 && (board[i + 1][j - 1] == 1 || board[i + 1][j - 1] == -1)) {
+				count++;
+			}
+			if (j > 0 && (board[i][j - 1] == 1 || board[i][j - 1] == -1)) {
+				count++;
+			}
+			if (i > 0 && j > 0 && (board[i - 1][j - 1] == 1 || board[i - 1][j - 1] == -1)) {
+				count++;
+			}
+			if (board[i][j] == 1) {
+				if (count < 2 || count > 3) {
+					board[i][j] = -1;
+				}
+			} else {
+				if (count == 3) {
+					board[i][j] = 2;
+				}
+			}
+		}
+	}
+	for (int i = 0; i < boardSize; i++) {
+		for (int j = 0; j < *boardColSize; j++) {
+			if (board[i][j] == -1) {
+				board[i][j] = 0;
+			}
+			if (board[i][j] == 2) {
+				board[i][j] = 1;
+			}
+		}
+	}
+}
