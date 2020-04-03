@@ -1014,19 +1014,13 @@ int myAtoi(char* str)
 			return res;
 		}
 	}
-	char* number = (char*)malloc(sizeof(char) * str_len);
-	int number_len = 0;
 	if (str[i] == '+' || str[i] == '-') {
 		for (int j = i + 1; j < str_len; j++) {
 			if (str[j] >= '0' && str[j] <= '9') {
-				number[number_len] = str[j];
-				number_len++;
+				temp_res = temp_res * 10 + str[j] - 48;
 			} else {
 				break;
 			}
-		}
-		for (int k = 0; k < number_len; k++) {
-			temp_res = temp_res + (number[k] - 48) * pow(10, number_len - k - 1);
 		}
 		if (str[i] == '+') {
 			res = temp_res <= INT_MAX ? temp_res : INT_MAX;
@@ -1037,17 +1031,12 @@ int myAtoi(char* str)
 	} else if (str[i] >= '0' && str[i] <= '9') {
 		for (int j = i; j < str_len; j++) {
 			if (str[j] >= '0' && str[j] <= '9') {
-				number[number_len] = str[j];
-				number_len++;
+				temp_res = temp_res * 10 + str[j] - 48;
 			} else {
 				break;
 			}
 		}
-		for (int k = 0; k < number_len; k++) {
-			temp_res = temp_res + (number[k] - 48) * pow(10, number_len - k - 1);
-		}
 		res = temp_res <= INT_MAX ? temp_res : INT_MAX;
 	}
-	free(number);
 	return res;
 }
