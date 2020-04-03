@@ -1001,3 +1001,53 @@ void gameOfLife(int** board, int boardSize, int* boardColSize)
 		}
 	}
 }
+
+int myAtoi(char* str) 
+{
+	int res = 0;
+	double temp_res = 0;
+	int str_len = strlen(str);
+	int i = 0;
+	while (str[i] == ' ') {
+		i++;
+		if (i == str_len) {
+			return res;
+		}
+	}
+	char* number = (char*)malloc(sizeof(char) * str_len);
+	int number_len = 0;
+	if (str[i] == '+' || str[i] == '-') {
+		for (int j = i + 1; j < str_len; j++) {
+			if (str[j] >= '0' && str[j] <= '9') {
+				number[number_len] = str[j];
+				number_len++;
+			} else {
+				break;
+			}
+		}
+		for (int k = 0; k < number_len; k++) {
+			temp_res = temp_res + (number[k] - 48) * pow(10, number_len - k - 1);
+		}
+		if (str[i] == '+') {
+			res = temp_res <= INT_MAX ? temp_res : INT_MAX;
+			
+		} else {
+			res = temp_res <= pow(2, 31) ? -1 * temp_res : INT_MIN;
+		}
+	} else if (str[i] >= '0' && str[i] <= '9') {
+		for (int j = i; j < str_len; j++) {
+			if (str[j] >= '0' && str[j] <= '9') {
+				number[number_len] = str[j];
+				number_len++;
+			} else {
+				break;
+			}
+		}
+		for (int k = 0; k < number_len; k++) {
+			temp_res = temp_res + (number[k] - 48) * pow(10, number_len - k - 1);
+		}
+		res = temp_res <= INT_MAX ? temp_res : INT_MAX;
+	}
+	free(number);
+	return res;
+}
