@@ -1044,31 +1044,24 @@ int myAtoi(char* str)
 int trap(int* height, int heightSize) 
 {
 	int res = 0;
-	for (int i = 1; i < heightSize - 1; i++) {
-		int left_max = height[i];
-		int left_max_index = 0;
-		int right_max = height[i];
-		int right_max_index = 0;
-		for (int j = i - 1; j >= 0; j--) {
-			if (height[j] > left_max) {
-				left_max = height[j];
-				left_max_index = j;
-			}
-		}
-		if (left_max == height[i]) {
-			continue;
-		}
-		for (int j = i + 1; j < heightSize; j++) {
-			if (height[j] > right_max) {
-				right_max = height[j];
-				right_max_index = j;
-			}
-		}
-		if (right_max == height[i]) {
-			continue;
-		}
-		int res_add = left_max < right_max ? left_max - height[i] : right_max - height[i];
-		res = res + res_add;
+	if (heightSize == 0) {
+		return 0;
 	}
+	int *left_max = (int*)malloc(sizeof(int) * heightSize);
+	int *right_max = (int*)malloc(sizeof(int) * heightSize);
+	left_max[0] = height[0];
+	for (int i = 1; i < heightSize; i++) {
+		left_max[i] = height[i] > left_max[i - 1] ? height[i] : left_max[i - 1];
+	}
+	right_max[heightSize - 1] = height[heightSize - 1];
+	for (int i = heightSize - 2; i >= 0; i--) {
+		right_max[i] = height[i] > right_max[i + 1] ? height[i] : right_max[i + 1];
+	}
+	for (int i = 1; i < heightSize - 1; i++) {
+		int k = left_max[i] > right_max[i] ? right_max[i] : left_max[i];
+		res = res + k - height[i];
+	}
+	free(left_max);
+	free(right_max);
 	return res;
 }
