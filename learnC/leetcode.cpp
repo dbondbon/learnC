@@ -1040,3 +1040,35 @@ int myAtoi(char* str)
 	}
 	return res;
 }
+
+int trap(int* height, int heightSize) 
+{
+	int res = 0;
+	for (int i = 1; i < heightSize - 1; i++) {
+		int left_max = height[i];
+		int left_max_index = 0;
+		int right_max = height[i];
+		int right_max_index = 0;
+		for (int j = i - 1; j >= 0; j--) {
+			if (height[j] > left_max) {
+				left_max = height[j];
+				left_max_index = j;
+			}
+		}
+		if (left_max == height[i]) {
+			continue;
+		}
+		for (int j = i + 1; j < heightSize; j++) {
+			if (height[j] > right_max) {
+				right_max = height[j];
+				right_max_index = j;
+			}
+		}
+		if (right_max == height[i]) {
+			continue;
+		}
+		int res_add = left_max < right_max ? left_max - height[i] : right_max - height[i];
+		res = res + res_add;
+	}
+	return res;
+}

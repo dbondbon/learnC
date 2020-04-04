@@ -35,5 +35,6 @@ int* sortArray(int* nums, int numsSize, int* returnSize);
 int* maxDepthAfterSplit(char* seq, int* returnSize);
 void gameOfLife(int** board, int boardSize, int* boardColSize);
 int myAtoi(char* str);
+int trap(int* height, int heightSize);
 
 #endif
