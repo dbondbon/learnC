@@ -1065,3 +1065,136 @@ int trap(int* height, int heightSize)
 	free(right_max);
 	return res;
 }
+
+LFUCache* lFUCacheCreate(int capacity) 
+{
+	LFUCache* head = (LFUCache*)malloc(sizeof(LFUCache));
+	head->prev = NULL;
+	head->next = NULL;
+	head->key = -1;
+	head->val = -1;
+	head->freq = 0;
+	head->total_size = capacity;
+	head->cur_size = 0;
+	return head;
+}
+
+static void lFUCacheInsert(LFUCache* obj, LFUCache* new_node)
+{
+	LFUCache *head = obj;
+	LFUCache *cur_node = head->next;
+	LFUCache *last_node = head;
+	LFUCache *temp = NULL;
+	cur_node = head->next;
+	while (cur_node != NULL) {
+		if (cur_node->freq <= new_node->freq) {
+			last_node = cur_node->prev;
+			break;
+		}
+		last_node = cur_node;
+		cur_node = cur_node->next;
+	}
+	if (last_node->next == NULL) {
+		if (head->cur_size < head->total_size) {
+			head->cur_size = head->cur_size + 1;
+			last_node->next = new_node;
+			new_node->prev = last_node;
+			new_node->next = NULL;
+		} else {
+			new_node->prev = last_node->prev;
+			last_node->prev->next = new_node;
+			new_node->next = NULL;
+			free(last_node);
+		}
+	} else {
+		new_node->prev = last_node;
+		new_node->next = last_node->next;
+		last_node->next->prev = new_node;
+		last_node->next = new_node;
+		if (head->cur_size < head->total_size) {
+			head->cur_size = head->cur_size + 1;
+		} else {
+			temp = last_node;
+			while (temp->next != NULL) {
+				temp = temp->next;
+			}
+			temp->prev->next = NULL;
+			free(temp);
+		}
+	}
+}
+
+int lFUCacheGet(LFUCache* obj, int key) 
+{
+	int val = -1;
+	LFUCache *head = obj;
+	LFUCache *cur_node = head->next;
+	LFUCache *key_node = NULL;
+	if (head->cur_size == 0) {
+		return val;
+	}
+	while (cur_node != NULL) {
+		if (cur_node->key == key) {
+			val = cur_node->val;
+			key_node = cur_node;
+			break;
+		}
+		cur_node = cur_node->next;
+	}
+	if (key_node != NULL) {
+		if (key_node->next == NULL) {
+			key_node->prev->next = NULL;
+		} else {
+			key_node->prev->next = key_node->next;
+			key_node->next->prev = key_node->prev;
+		}
+		key_node->freq = key_node->freq + 1;
+		obj->cur_size = obj->cur_size - 1;
+		lFUCacheInsert(obj, key_node);
+	}
+	return val;
+}
+
+void lFUCachePut(LFUCache* obj, int key, int value) 
+{
+	int flag_new = 1;
+	LFUCache *head = obj;
+	LFUCache *cur_node = head->next;
+	LFUCache *key_node = NULL;
+	while (cur_node != NULL) {
+		if (cur_node->key == key) {
+			cur_node->val = value;
+			key_node = cur_node;
+			flag_new = 0;
+		}
+		cur_node = cur_node->next;
+	}
+	if (flag_new) {
+		if (head->total_size > 0) {
+			LFUCache* new_node = (LFUCache*)malloc(sizeof(LFUCache));
+			new_node->key = key;
+			new_node->val = value;
+			new_node->freq = 0;
+			lFUCacheInsert(obj, new_node);
+		}
+	} else {
+		key_node->prev->next = key_node->next;
+		if (key_node->next != NULL) {
+			key_node->next->prev = key_node->prev;
+		}
+		key_node->freq = key_node->freq + 1;
+		obj->cur_size = obj->cur_size - 1;
+		lFUCacheInsert(obj, key_node);
+	}
+}
+
+void lFUCacheFree(LFUCache* obj) 
+{
+	LFUCache* cur = obj;
+	LFUCache* next = NULL;
+	while (cur != NULL) {
+		next = cur->next;
+		free(cur);
+		cur = next;
+	}
+}

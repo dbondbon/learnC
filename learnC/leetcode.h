@@ -7,6 +7,16 @@
 
 #include "algorithm.h"
 
+typedef struct _LFUCache {
+	struct _LFUCache *prev;
+	struct _LFUCache *next;
+	int key;
+	int val;
+	int freq;
+	int cur_size; // only head
+	int total_size; // only head
+} LFUCache;
+
 int maxAreaOfIsland(int **grid, int gridSize, int *gridColSize);
 char *compressString(char *S);
 int countCharacters(char **words, int wordsSize, char *chars);
@@ -36,5 +46,10 @@ int* maxDepthAfterSplit(char* seq, int* returnSize);
 void gameOfLife(int** board, int boardSize, int* boardColSize);
 int myAtoi(char* str);
 int trap(int* height, int heightSize);
+
+LFUCache* lFUCacheCreate(int capacity);
+int lFUCacheGet(LFUCache* obj, int key);
+void lFUCachePut(LFUCache* obj, int key, int value);
+void lFUCacheFree(LFUCache* obj);
 
 #endif
