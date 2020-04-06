@@ -52,4 +52,6 @@ int lFUCacheGet(LFUCache* obj, int key);
 void lFUCachePut(LFUCache* obj, int key, int value);
 void lFUCacheFree(LFUCache* obj);
 
+int minDistance(char* word1, char* word2);
+
 #endif
