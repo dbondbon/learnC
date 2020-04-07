@@ -1254,3 +1254,62 @@ int minDistance(char* word1, char* word2)
 	free(dp);
 	return res;
 }
+
+int coinChange(int* coins, int coinsSize, int amount) 
+{
+	int res = -1;
+	int temp_res = 0;
+	for (int i = 0; i < coinsSize - 1; i++) {
+		for (int j = 0; j < coinsSize - 1 - i; j++) {
+			if (coins[j] > coins[j + 1]) {
+				int temp = coins[j];
+				coins[j] = coins[j + 1];
+				coins[j + 1] = temp;
+			}
+		}
+	}
+	for (int i = coinsSize - 1; i >= 0; i--) {
+		temp_res = 0;
+		int temp_amount = amount;
+		for (int j = i; j >= 0; j--) {
+			int m = temp_amount / coins[j];
+			int n = temp_amount % coins[j];
+			temp_res = temp_res + m;
+			temp_amount = n;
+			if (temp_amount == 0) {
+				res = temp_res;
+				return res;
+			}
+		}
+	}
+	return res;
+}
+
+void rotate(int** matrix, int matrixSize, int* matrixColSize) 
+{
+	int** temp_matrix = (int**)malloc(sizeof(int*) * matrixSize);
+	for (int i = 0; i < matrixSize; i++) {
+		temp_matrix[i] = (int*)malloc(sizeof(int) * (*matrixColSize));
+	}
+	for (int i = 0; i < matrixSize; i++) {
+		for (int j = 0; j < *matrixColSize; j++) {
+			temp_matrix[i][j] = matrix[i][j];
+		}
+	}
+	int m = 0;
+	int n = 0;
+	for (int j = 0; j < *matrixColSize; j++) {
+		for (int i = matrixSize - 1; i >= 0; i--) {
+			matrix[m][n] = temp_matrix[i][j];
+			n++;
+			if (n == matrixSize) {
+				m++;
+				n = 0;
+			}
+		}
+	}
+	for (int i = 0; i < matrixSize; i++) {
+		free(temp_matrix[i]);
+	}
+	free(temp_matrix);
+}

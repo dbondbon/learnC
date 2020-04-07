@@ -53,5 +53,7 @@ void lFUCachePut(LFUCache* obj, int key, int value);
 void lFUCacheFree(LFUCache* obj);
 
 int minDistance(char* word1, char* word2);
+int coinChange(int* coins, int coinsSize, int amount);
+void rotate(int** matrix, int matrixSize, int* matrixColSize);
 
 #endif
