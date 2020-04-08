@@ -1320,11 +1320,7 @@ int movingCount(int m, int n, int k)
 	int** temp = (int**)malloc(sizeof(int*) * m);
 	for (int i = 0; i < m; i++) {
 		temp[i] = (int*)malloc(sizeof(int) * n);
-	}
-	for (int i = 0; i < m; i++) {
-		for (int j = 0; j < n; j++) {
-			temp[i][j] = 0;
-		}
+		memset(temp[i], 0, sizeof(int) * n);
 	}
 	temp[0][0] = 1;
 	int flag;
