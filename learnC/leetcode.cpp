@@ -1258,29 +1258,15 @@ int minDistance(char* word1, char* word2)
 int coinChange(int* coins, int coinsSize, int amount) 
 {
 	int res = -1;
-	int temp_res = 0;
-	for (int i = 0; i < coinsSize - 1; i++) {
-		for (int j = 0; j < coinsSize - 1 - i; j++) {
-			if (coins[j] > coins[j + 1]) {
-				int temp = coins[j];
-				coins[j] = coins[j + 1];
-				coins[j + 1] = temp;
-			}
-		}
+	if (coinsSize == 0) {
+		return res;
 	}
-	for (int i = coinsSize - 1; i >= 0; i--) {
-		temp_res = 0;
-		int temp_amount = amount;
-		for (int j = i; j >= 0; j--) {
-			int m = temp_amount / coins[j];
-			int n = temp_amount % coins[j];
-			temp_res = temp_res + m;
-			temp_amount = n;
-			if (temp_amount == 0) {
-				res = temp_res;
-				return res;
-			}
-		}
+	int* dp = (int*)malloc(sizeof(int) * coinsSize);
+	if (amount % coins[0] == 0) {
+
+	}
+	for (int i = 0; i < coinsSize; i++) {
+
 	}
 	return res;
 }
@@ -1374,4 +1360,68 @@ char** generateParenthesis(int n, int* returnSize) {
 	*returnSize = 0;
 	generate(0, 0, n, str, 0, result, returnSize);
 	return result;
+}
+
+char** generateParenthesis_mine(int n, int* returnSize) {
+	return NULL;
+}
+
+static char* reverseWords_get_last_word(char* s, int *s_len)
+{
+	int word_len = 0;
+	int flag = 0;
+	int s_index = *s_len - 1;
+	while (s_index >= 0 && s[s_index] == ' ') {
+		*s_len = *s_len - 1;
+		s_index--;
+	}
+	if (s_index == -1) {
+		return NULL;
+	}
+	for (; s_index >= 0; s_index--) {
+		if (s[s_index] != ' ') {
+			word_len++;
+			*s_len = *s_len - 1;
+		} else {
+			flag = 1;
+			break;
+		}
+	}
+	char* word = (char*)malloc(sizeof(char) * (word_len + 1));
+	memset(word, '\0', sizeof(char) * (word_len + 1));
+	s_index++;
+	for (int i = 0; i < word_len; i++) {
+		word[i] = s[s_index];
+		s_index++;
+	}
+	return word;
+}
+
+char* reverseWords(char* s) 
+{
+	int len = strlen(s);
+	char* res = (char*)malloc(sizeof(char) * (len + 1));
+	memset(res, '\0', sizeof(char) * (len + 1));
+	int res_index = 0;
+	int rest_len = len;
+	while (1) {
+		char* word = reverseWords_get_last_word(s, &rest_len);
+		if (word == NULL) {
+			if (res_index > 0) {
+				res_index--;
+				res[res_index] = '\0';	
+			}
+			break;
+		}
+		int word_len = strlen(word);
+		for (int i = 0; i < word_len; i++) {
+			res[res_index++] = word[i];
+		}
+		res[res_index++] = ' ';
+		free(word);
+	}
+	memset(s, '\0', len);
+	memcpy(s, res, len);
+	free(res);
+	return s;
 }
