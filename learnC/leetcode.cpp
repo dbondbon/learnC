@@ -1425,3 +1425,59 @@ char* reverseWords(char* s)
 	free(res);
 	return s;
 }
+
+int superEggDrop(int K, int N) 
+{
+	int res = 0;
+	if (K == 1) {
+		return N;
+	}
+	if (N == 1) {
+		return 1;
+	} else if (N == 2) {
+		return 2;
+	} else if (N == 3) {
+		return 2;
+	}
+	int** dp = (int**)malloc(sizeof(int*) * (K + 1));
+	for (int i = 1; i < K + 1; i++) {
+		dp[i] = (int*)malloc(sizeof(int) * (N + 2));
+	}
+	for (int i = 1; i < K + 1; i++) {
+		memset(dp[i], -1, sizeof(int) * (N + 2));
+	}
+	for (int i = 1; i < N + 2; i++) {
+		dp[1][i] = i - 1;
+	}
+	for (int i = 2; i < K + 1; i++) {
+		dp[i][1] = 0;
+		dp[i][2] = 1;
+		dp[i][3] = 2;
+		dp[i][4] = 2;
+	}
+	for (int i = 2; i < K + 1; i++) {
+		for (int j = 5; j < N + 2; j++) {
+			int max = 10001;
+			for (int k = 3; k <= j; k++) {
+				int left = dp[i - 1][k - 1];
+				int right = dp[i][j - k + 1];
+				if (left > right) {
+					if (left + 1 < max) {
+						max = left + 1;
+					}
+				} else {
+					if (right + 1 < max) {
+						max = right + 1;
+					}
+				}
+			}
+			dp[i][j] = max;
+		}
+	}
+	res = dp[K][N + 1];
+	for (int i = 1; i < K + 1; i++) {
+		free(dp[i]);
+	}
+	free(dp);
+	return res;
+}

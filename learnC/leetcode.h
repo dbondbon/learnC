@@ -58,5 +58,6 @@ void rotate(int** matrix, int matrixSize, int* matrixColSize);
 int movingCount(int m, int n, int k);
 char** generateParenthesis(int n, int* returnSize);
 char* reverseWords(char* s);
+int superEggDrop(int K, int N);
 
 #endif
