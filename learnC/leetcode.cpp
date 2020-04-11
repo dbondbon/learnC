@@ -1494,13 +1494,13 @@ int superEggDrop_simple(int K, int N) {
 	int** dp = (int**)malloc(sizeof(int*) * (N + 1));
 	for (int i = 1; i < N + 1; i++) {
 		dp[i] = (int*)malloc(sizeof(int) * (K + 1));
+		memset(dp[i], 0, sizeof(int) * (K + 1));
 	}
-
 	for (int i = 1; i <= K; i++) {
 		dp[1][i] = 1;
 	}
 	for (int i = 2; i <= N; i++) {
-		for (int j = 1; i <= K; j++) {
+		for (int j = 1; j <= K; j++) {
 			dp[i][j] = 1 + dp[i - 1][j] + dp[i - 1][j - 1];
 		}
 		if (dp[i][K] >= N) {

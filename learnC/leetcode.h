@@ -59,5 +59,6 @@ int movingCount(int m, int n, int k);
 char** generateParenthesis(int n, int* returnSize);
 char* reverseWords(char* s);
 int superEggDrop(int K, int N);
+int superEggDrop_simple(int K, int N);
 
 #endif
