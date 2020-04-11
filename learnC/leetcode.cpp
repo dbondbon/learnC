@@ -1486,25 +1486,31 @@ int superEggDrop(int K, int N)
 	return res;
 }
 
-int box[101][10001];
 int superEggDrop_simple(int K, int N) {
-	int floor = 0;
-	int i;
-	if (K == 1) return N;
-	if (N == 1) return 1;
-	if (K > N) K = N;
-	for (i = 0; i <= K; ++i) {
-		box[i][1] = 1;
+	if (N == 1) {
+		return 1;
 	}
-	for (i = 0; i <= N; ++i) {
-		box[1][i] = i;
+	int res = -1;
+	int** dp = (int**)malloc(sizeof(int*) * (N + 1));
+	for (int i = 1; i < N + 1; i++) {
+		dp[i] = (int*)malloc(sizeof(int) * (K + 1));
 	}
-	for (i = 2; floor < N; ++i) {
-		for (int j = 2; j <= K; ++j) {
-			box[j][i] = box[j][i - 1] + box[j - 1][i - 1] + 1;
-			if (box[j][i] > floor) floor = box[j][i];
-			if (floor >= N) return i;
+
+	for (int i = 1; i <= K; i++) {
+		dp[1][i] = 1;
+	}
+	for (int i = 2; i <= N; i++) {
+		for (int j = 1; i <= K; j++) {
+			dp[i][j] = 1 + dp[i - 1][j] + dp[i - 1][j - 1];
+		}
+		if (dp[i][K] >= N) {
+			res = i;
+			break;
 		}
 	}
-	return 0;
+	for (int i = 1; i < N + 1; i++) {
+		free(dp[i]);
+	}
+	free(dp);
+	return res;
 }
