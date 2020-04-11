@@ -1426,6 +1426,9 @@ char* reverseWords(char* s)
 	return s;
 }
 
+#define max(a, b) (((a) > (b)) ? (a) : (b))
+#define min(a, b) (((a) < (b)) ? (a) : (b))
+
 int superEggDrop(int K, int N) 
 {
 	int res = 0;
@@ -1457,6 +1460,7 @@ int superEggDrop(int K, int N)
 	}
 	for (int i = 2; i < K + 1; i++) {
 		for (int j = 5; j < N + 2; j++) {
+			// ÏßĞÔ²éÕÒ
 			int max = 10001;
 			for (int k = 3; k <= j; k++) {
 				int left = dp[i - 1][k - 1];
@@ -1480,4 +1484,27 @@ int superEggDrop(int K, int N)
 	}
 	free(dp);
 	return res;
+}
+
+int box[101][10001];
+int superEggDrop_simple(int K, int N) {
+	int floor = 0;
+	int i;
+	if (K == 1) return N;
+	if (N == 1) return 1;
+	if (K > N) K = N;
+	for (i = 0; i <= K; ++i) {
+		box[i][1] = 1;
+	}
+	for (i = 0; i <= N; ++i) {
+		box[1][i] = i;
+	}
+	for (i = 2; floor < N; ++i) {
+		for (int j = 2; j <= K; ++j) {
+			box[j][i] = box[j][i - 1] + box[j - 1][i - 1] + 1;
+			if (box[j][i] > floor) floor = box[j][i];
+			if (floor >= N) return i;
+		}
+	}
+	return 0;
 }
