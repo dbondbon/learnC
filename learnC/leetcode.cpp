@@ -3,6 +3,8 @@
 #include <math.h>
 #include "leetcode.h"
 
+#pragma warning(disable : 4996)
+
 static int maxAreaOfIsland_findAll(int **grid,int i, int j, int *temp, 
 								   int gridSize, int gridColSize)
 {
@@ -1513,4 +1515,108 @@ int superEggDrop_simple(int K, int N) {
 	}
 	free(dp);
 	return res;
+}
+
+static int MAX(int a, int b) {
+	return (a > b) ? a : b;
+}
+static int MIN(int a, int b) {
+	return (a < b) ? a : b;
+}
+
+double* intersection(int* start1, int start1Size, int* end1, int end1Size, 
+				     int* start2, int start2Size, int* end2, int end2Size, int* returnSize) 
+{
+	int x1 = start1[0], y1 = start1[1], x2 = end1[0], y2 = end1[1];//line1
+	int x3 = start2[0], y3 = start2[1], x4 = end2[0], y4 = end2[1];//line2
+	double* result = (double*)malloc(sizeof(double) * 2);
+	double t1, t2;
+	//(x2-x1)*(y4-y3) ? (x4-x3)*(y2-y1)判断是否平行
+	if ((x2 - x1) * (y4 - y3) != (x4 - x3) * (y2 - y1)) {//不平行
+		t1 = ((x3 - x1) * (y4 - y3) + (y1 - y3) * (x4 - x3)) * 1.0 / ((x2 - x1) * (y4 - y3) - (x4 - x3) * (y2 - y1));
+		t2 = ((x1 - x3) * (y2 - y1) + (y3 - y1) * (x2 - x1)) * 1.0 / ((x4 - x3) * (y2 - y1) - (x2 - x1) * (y4 - y3));
+		if (t1 >= 0 && t1 <= 1 && t2 >= 0 && t2 <= 1) {
+			result[0] = x1 + t1 * (x2 - x1);
+			result[1] = y1 + t1 * (y2 - y1);
+			*returnSize = 2;
+		}
+		else {
+			// result = NULL;
+			*returnSize = 0;
+		}
+	}
+	else {//平行
+		if (x2 == x1) {//平行于y轴
+			if (x3 != x1) {//不共线
+				// result = NULL;
+				*returnSize = 0;
+			}
+			else if (MIN(y1, y2) >= MIN(y3, y4) && MIN(y1, y2) <= MAX(y3, y4)) {
+				result[0] = x1;
+				result[1] = MIN(y1, y2);
+				*returnSize = 2;
+			}
+			else if (MIN(y3, y4) >= MIN(y1, y2) && MIN(y3, y4) <= MAX(y1, y2)) {
+				result[0] = x1;
+				result[1] = MIN(y3, y4);
+				*returnSize = 2;
+			}
+			else {
+				// result = NULL;
+				*returnSize = 0;
+			}
+		}
+		else if (y2 == y1) {//平行于x轴
+			if (y3 != y1) {//不共线
+				// result = NULL;
+				*returnSize = 0;
+			}
+			else if (MIN(x1, x2) >= MIN(x3, x4) && MIN(x1, x2) <= MAX(x3, x4)) {
+				result[0] = MIN(x1, x2);
+				result[1] = y1;
+				*returnSize = 2;
+			}
+			else if (MIN(x3, x4) >= MIN(x1, x2) && MIN(x3, x4) <= MAX(x1, x2)) {
+				result[0] = MIN(x3, x4);
+				result[1] = y1;
+				*returnSize = 2;
+			}
+			else {
+				// result = NULL;
+				*returnSize = 0;
+			}
+		}
+		else {//既不平行于x轴又不平行于y轴
+			if ((y3 - y2) * (x3 - x1) != (y3 - y1) * (x3 - x2)) {//不共线
+				*returnSize = 0;
+			}
+			else {
+				if (x3 < x4 && (x3 - x1) * (x3 - x2) <= 0) {
+					result[0] = x3;
+					result[1] = y3;
+					*returnSize = 2;
+				}
+				else if (x4 < x3 && (x4 - x1) * (x4 - x2) <= 0) {
+					result[0] = x4;
+					result[1] = y4;
+					*returnSize = 2;
+				}
+				else if (x1 < x2 && (x1 - x3) * (x1 - x4) <= 0) {
+					result[0] = x1;
+					result[1] = y1;
+					*returnSize = 2;
+				}
+				else if (x2 < x1 && (x2 - x3) * (x2 - x4) <= 0) {
+					result[0] = x2;
+					result[1] = y2;
+					*returnSize = 2;
+				}
+				else {
+					*returnSize = 0;
+				}
+			}
+		}
+	}
+
+	return result;
 }

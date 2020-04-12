@@ -60,5 +60,7 @@ char** generateParenthesis(int n, int* returnSize);
 char* reverseWords(char* s);
 int superEggDrop(int K, int N);
 int superEggDrop_simple(int K, int N);
+double* intersection(int* start1, int start1Size, int* end1, int end1Size,
+				     int* start2, int start2Size, int* end2, int end2Size, int* returnSize);
 
 #endif
