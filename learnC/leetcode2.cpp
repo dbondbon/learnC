@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <string.h>
 #include "leetcode2.h"
 
 /** Initialize your data structure here. */
@@ -138,5 +139,56 @@ struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2)
 	}
 	free(list1);
 	free(list2);
+	return res;
+}
+
+int** updateMatrix(int** matrix, int matrixSize, int* matrixColSize, int* returnSize, int** returnColumnSizes) 
+{
+	*returnSize = matrixSize;
+	*returnColumnSizes = (int*)malloc(sizeof(int) * matrixSize);
+	for (int i = 0; i < matrixSize; i++) {
+		(*returnColumnSizes)[i] = *matrixColSize;
+	}
+	int** res = (int**)malloc(sizeof(int*) * matrixSize);
+	for (int i = 0; i < matrixSize; i++) {
+		res[i] = (int*)malloc(sizeof(int) * (*matrixColSize));
+		memset(res[i], -1, sizeof(int) * (*matrixColSize));
+	}
+	for (int i = 0; i < matrixSize; i++) {
+		for (int j = 0; j < *matrixColSize; j++) {
+			if (matrix[i][j] == 0) {
+				res[i][j] = matrix[i][j];
+			}
+		}
+	}
+	int k = 0;
+	int flag;
+	do {
+		flag = 0;
+		for (int i = 0; i < matrixSize; i++) {
+			for (int j = 0; j < *matrixColSize; j++) {
+				if (res[i][j] == -1) {	
+					if (i > 0 && res[i - 1][j] == k) {
+						// ио
+						res[i][j] = k + 1;
+						flag = 1;
+					} else if (i < matrixSize - 1 && res[i + 1][j] == k) {
+						// об
+						res[i][j] = k + 1;
+						flag = 1;
+					} else if (j > 0 && res[i][j - 1] == k) {
+						// вС
+						res[i][j] = k + 1;
+						flag = 1;
+					} else if (j < *matrixColSize - 1 && res[i][j + 1] == k) {
+						// ср
+						res[i][j] = k + 1;
+						flag = 1;
+					}
+				}
+			}
+		}
+		k++;
+	} while (flag);
 	return res;
 }

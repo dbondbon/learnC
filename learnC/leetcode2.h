@@ -27,5 +27,6 @@ void twitterUnfollow(Twitter* obj, int followerId, int followeeId);
 void twitterFree(Twitter* obj);
 
 struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2);
+int** updateMatrix(int** matrix, int matrixSize, int* matrixColSize, int* returnSize, int** returnColumnSizes);
 
 #endif
