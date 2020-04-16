@@ -192,3 +192,95 @@ int** updateMatrix(int** matrix, int matrixSize, int* matrixColSize, int* return
 	} while (flag);
 	return res;
 }
+
+int** merge_next(int** intervals, int intervalsSize, int* intervalsColSize, int* returnSize, int** returnColumnSizes)
+{
+	if (intervalsSize == 0) {
+		*returnSize = 0;
+		*returnColumnSizes = NULL;
+		return NULL;
+	}
+	int temp[10000] = { 0 };
+	int** res = (int**)malloc(sizeof(int*) * intervalsSize);
+	for (int i = 0; i < intervalsSize; i++) {
+		res[i] = (int*)malloc(sizeof(int) * (*intervalsColSize));
+	}
+	for (int i = 0; i < intervalsSize; i++) {
+		int first = intervals[i][0];
+		if (first == 1) {
+			for (int j = first; j <= intervals[i][1]; j++) {
+				temp[j] = 1;
+			}
+		}
+		else {
+
+		}
+	}
+	int index = 0;
+	for (int i = 0; i < 10000; i++) {
+		if (temp[i] == 1) {
+			res[index][0] = i;
+			i++;
+			while (temp[i] == 1) {
+				i++;
+			}
+			res[index][1] = i - 1;
+			index++;
+		}
+	}
+	*returnSize = index;
+	for (int i = index; i < intervalsSize; i++) {
+		free(res[i]);
+	}
+	*returnColumnSizes = (int*)malloc(sizeof(int) * index);
+	for (int i = 0; i < index; i++) {
+		(*returnColumnSizes)[i] = *intervalsColSize;
+	}
+	return res;
+}
+
+
+int** merge(int** intervals, int intervalsSize, int* intervalsColSize, int* returnSize, int** returnColumnSizes) 
+{
+	if (intervalsSize == 0) {
+		*returnSize = 0;
+		*returnColumnSizes = NULL;
+		return NULL;
+	}
+	int temp[10000] = { 0 };
+	int** res = (int**)malloc(sizeof(int*) * intervalsSize);
+	for (int i = 0; i < intervalsSize; i++) {
+		res[i] = (int*)malloc(sizeof(int) * (*intervalsColSize));
+	}
+	for (int i = 0; i < intervalsSize; i++) {
+		int first = intervals[i][0];
+		if (first == 1) {
+			for (int j = first; j <= intervals[i][1]; j++) {
+				temp[j] = 1;
+			}
+		} else {
+			
+		}
+	}
+	int index = 0;
+	for (int i = 0; i < 10000; i++) {
+		if (temp[i] == 1) {
+			res[index][0] = i;
+			i++;
+			while (temp[i] == 1) {
+				i++;
+			}
+			res[index][1] = i - 1;
+			index++;
+		}
+	}
+	*returnSize = index;
+	for (int i = index; i < intervalsSize; i++) {
+		free(res[i]);
+	}
+	*returnColumnSizes = (int*)malloc(sizeof(int) * index);
+	for (int i = 0; i < index; i++) {
+		(*returnColumnSizes)[i] = *intervalsColSize;
+	}
+	return res;
+}
