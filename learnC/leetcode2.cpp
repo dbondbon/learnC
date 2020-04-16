@@ -247,39 +247,51 @@ int** merge(int** intervals, int intervalsSize, int* intervalsColSize, int* retu
 		*returnColumnSizes = NULL;
 		return NULL;
 	}
-	int temp[10000] = { 0 };
 	int** res = (int**)malloc(sizeof(int*) * intervalsSize);
 	for (int i = 0; i < intervalsSize; i++) {
 		res[i] = (int*)malloc(sizeof(int) * (*intervalsColSize));
 	}
-	for (int i = 0; i < intervalsSize; i++) {
-		int first = intervals[i][0];
-		if (first == 1) {
-			for (int j = first; j <= intervals[i][1]; j++) {
-				temp[j] = 1;
+	// °´ÆðµãÅÅÐò
+	for (int i = 0; i < intervalsSize - 1; i++) {
+		int flag = 1;
+		for (int j = 0; j < intervalsSize - i - 1; j++) {
+			if (intervals[j][0] > intervals[j + 1][0]) {
+				int temp1 = intervals[j][0];
+				int temp2 = intervals[j][1];
+				intervals[j][0] = intervals[j + 1][0];
+				intervals[j][1] = intervals[j + 1][1];
+				intervals[j + 1][0] = temp1;
+				intervals[j + 1][1] = temp2;
+				flag = 0;
 			}
-		} else {
-			
+		}
+		if (flag) {
+			break;
 		}
 	}
 	int index = 0;
-	for (int i = 0; i < 10000; i++) {
-		if (temp[i] == 1) {
-			res[index][0] = i;
-			i++;
-			while (temp[i] == 1) {
-				i++;
-			}
-			res[index][1] = i - 1;
+	res[index][0] = intervals[0][0];
+	res[index][1] = intervals[0][1];
+	int last_j = intervals[0][1];
+	for (int i = 1; i < intervalsSize; i++) {
+		if (intervals[i][0] > last_j) {
 			index++;
+			res[index][0] = intervals[i][0];
+			res[index][1] = intervals[i][1];
+			last_j = intervals[i][1];
+		} else {
+			if (intervals[i][1] > last_j) {
+				res[index][1] = intervals[i][1];
+				last_j = intervals[i][1];
+			}
 		}
 	}
-	*returnSize = index;
-	for (int i = index; i < intervalsSize; i++) {
+	for (int i = index + 1; i < intervalsSize; i++) {
 		free(res[i]);
 	}
-	*returnColumnSizes = (int*)malloc(sizeof(int) * index);
-	for (int i = 0; i < index; i++) {
+	*returnSize = index + 1;
+	*returnColumnSizes = (int*)malloc(sizeof(int) * (*returnSize));
+	for (int i = 0; i < *returnSize; i++) {
 		(*returnColumnSizes)[i] = *intervalsColSize;
 	}
 	return res;
