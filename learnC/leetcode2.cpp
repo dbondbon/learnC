@@ -296,3 +296,26 @@ int** merge(int** intervals, int intervalsSize, int* intervalsColSize, int* retu
 	}
 	return res;
 }
+
+bool canJump(int* nums, int numsSize) 
+{
+	if (numsSize == 1) {
+		if (nums[0] > 0) {
+			return 1;
+		} else {
+			return 0;
+		}
+	}
+	for (int i = numsSize - 2; i >= 0; i--) {
+		if (nums[i] >= numsSize - i - 1) {
+			if (i == 0) {
+				return 1;
+			} else {
+				if (canJump(nums, i + 1)) {
+					return 1;
+				}
+			}
+		}
+	}
+	return 0;
+}

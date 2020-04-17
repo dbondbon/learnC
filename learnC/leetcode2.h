@@ -29,5 +29,6 @@ void twitterFree(Twitter* obj);
 struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2);
 int** updateMatrix(int** matrix, int matrixSize, int* matrixColSize, int* returnSize, int** returnColumnSizes);
 int** merge(int** intervals, int intervalsSize, int* intervalsColSize, int* returnSize, int** returnColumnSizes);
+bool canJump(int* nums, int numsSize);
 
 #endif
