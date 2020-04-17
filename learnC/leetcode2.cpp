@@ -297,25 +297,56 @@ int** merge(int** intervals, int intervalsSize, int* intervalsColSize, int* retu
 	return res;
 }
 
-bool canJump(int* nums, int numsSize) 
+static bool canJump_next(int* nums, int numsSize, int *temp)
 {
 	if (numsSize == 1) {
-		if (nums[0] > 0) {
-			return 1;
-		} else {
-			return 0;
-		}
+		return 1;
 	}
 	for (int i = numsSize - 2; i >= 0; i--) {
 		if (nums[i] >= numsSize - i - 1) {
 			if (i == 0) {
 				return 1;
 			} else {
-				if (canJump(nums, i + 1)) {
-					return 1;
+				if (temp[i] == 1) {
+					continue;
+				} else {
+					temp[i] = 1;
+					if (canJump_next(nums, i + 1, temp)) {
+						return 1;
+					}
 				}
 			}
 		}
 	}
+	return 0;
+}
+
+bool canJump(int* nums, int numsSize) 
+{
+	// ¸¨ÖúÊý×é£¬ÅÐ¶ÏÊÇ·ñÖØ¸´¼ì²â
+	int* temp = (int*)malloc(sizeof(int) * numsSize);
+	memset(temp, 0, sizeof(int) * numsSize);
+	if (numsSize == 1) {
+		return 1;
+	}
+	for (int i = numsSize - 2; i >= 0; i--) {
+		if (nums[i] >= numsSize - i - 1) {
+			if (i == 0) {
+				free(temp);
+				return 1;
+			} else {
+				if (temp[i] == 1) {
+					continue;
+				} else {
+					temp[i] = 1;
+					if (canJump_next(nums, i + 1, temp)) {
+						free(temp);
+						return 1;
+					}
+				}
+			}
+		}
+	}
+	free(temp);
 	return 0;
 }
