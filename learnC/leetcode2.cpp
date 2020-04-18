@@ -350,3 +350,18 @@ bool canJump(int* nums, int numsSize)
 	free(temp);
 	return 0;
 }
+
+#define max(a, b) (((a) > (b)) ? (a) : (b))
+#define min(a, b) (((a) > (b)) ? (b) : (a))
+
+int maxArea(int* height, int heightSize) 
+{
+	int res = 0;
+	for (int i = 0; i < heightSize - 1; i++) {
+		for (int j = i + 1; j < heightSize; j++) {
+			int area = (j - i) * min(height[i], height[j]);
+			res = max(area, res);
+		}
+	}
+	return res;
+}
