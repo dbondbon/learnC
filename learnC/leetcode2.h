@@ -31,5 +31,6 @@ int** updateMatrix(int** matrix, int matrixSize, int* matrixColSize, int* return
 int** merge(int** intervals, int intervalsSize, int* intervalsColSize, int* returnSize, int** returnColumnSizes);
 bool canJump(int* nums, int numsSize);
 int maxArea(int* height, int heightSize);
+int getMaxRepetitions(char* s1, int n1, char* s2, int n2);
 
 #endif
