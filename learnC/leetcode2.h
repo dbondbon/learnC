@@ -32,5 +32,6 @@ int** merge(int** intervals, int intervalsSize, int* intervalsColSize, int* retu
 bool canJump(int* nums, int numsSize);
 int maxArea(int* height, int heightSize);
 int getMaxRepetitions(char* s1, int n1, char* s2, int n2);
+int numIslands(char** grid, int gridSize, int* gridColSize);
 
 #endif

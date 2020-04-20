@@ -398,3 +398,42 @@ int getMaxRepetitions(char* s1, int n1, char* s2, int n2)
 	}
 	return cnt / n2;
 }
+
+static void numIslands_get_more(char** grid, int gridSize, int gridColSize, int i, int j)
+{
+	// up
+	if (i > 0 && grid[i - 1][j] == '1') {
+		grid[i - 1][j] = '2';
+		numIslands_get_more(grid, gridSize, gridColSize, i - 1, j);
+	}
+	// right
+	if (j < gridColSize - 1 && grid[i][j + 1] == '1') {
+		grid[i][j + 1] = '2';
+		numIslands_get_more(grid, gridSize, gridColSize, i, j + 1);
+	}
+	// down
+	if (i < gridSize - 1 && grid[i + 1][j] == '1') {
+		grid[i + 1][j] = '2';
+		numIslands_get_more(grid, gridSize, gridColSize, i + 1, j);
+	}
+	// left
+	if (j > 0 && grid[i][j - 1] == '1') {
+		grid[i][j - 1] = '2';
+		numIslands_get_more(grid, gridSize, gridColSize, i, j - 1);
+	}
+}
+
+int numIslands(char** grid, int gridSize, int* gridColSize) 
+{
+	int res = 0;
+	for (int i = 0; i < gridSize; i++) {
+		for (int j = 0; j < *gridColSize; j++) {
+			if (grid[i][j] == '1') {
+				res++;
+				grid[i][j] = '2';
+				numIslands_get_more(grid, gridSize, *gridColSize, i, j);
+			}
+		}
+	}
+	return res;
+}
