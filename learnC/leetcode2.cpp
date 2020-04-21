@@ -441,18 +441,30 @@ int numIslands(char** grid, int gridSize, int* gridColSize)
 int numberOfSubarrays(int* nums, int numsSize, int k) 
 {
 	int res = 0;
+	int* temp = (int*)malloc(sizeof(int) * numsSize);
+	int total = 0;
 	for (int i = 0; i < numsSize; i++) {
-		int last_val = 0;
-		int count = 0;
-		for (int j = i; j < numsSize; j++) {
-			if (nums[j] % 2 != 0) {
-				count = last_val + 1;
-				last_val = count;
-			}
-			if (count == k) {
-				res++;
-			}
+		if (nums[i] % 2 != 0) {
+			temp[total] = i;
+			total++;
 		}
 	}
+	if (total < k) {
+		return 0;
+	}
+	for (int i = 0; i + k <= total; i++) {
+		if (i == 0) {
+			if (i + k == total) {
+				res += (temp[i] + 1) * (numsSize - temp[i + k - 1]);
+			} else {
+				res += (temp[i] + 1) * (temp[i + k] - temp[i + k - 1]);
+			}
+		} else if (i + k == total) {
+			res += (temp[i] - temp[i - 1]) * (numsSize - temp[i + k - 1]);
+		} else {
+			res += (temp[i] - temp[i - 1]) * (temp[i + k] - temp[i + k - 1]);
+		}
+	}
+	free(temp);
 	return res;
 }
