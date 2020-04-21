@@ -437,3 +437,22 @@ int numIslands(char** grid, int gridSize, int* gridColSize)
 	}
 	return res;
 }
+
+int numberOfSubarrays(int* nums, int numsSize, int k) 
+{
+	int res = 0;
+	for (int i = 0; i < numsSize; i++) {
+		int last_val = 0;
+		int count = 0;
+		for (int j = i; j < numsSize; j++) {
+			if (nums[j] % 2 != 0) {
+				count = last_val + 1;
+				last_val = count;
+			}
+			if (count == k) {
+				res++;
+			}
+		}
+	}
+	return res;
+}
