@@ -468,3 +468,42 @@ int numberOfSubarrays(int* nums, int numsSize, int k)
 	free(temp);
 	return res;
 }
+
+static void rightSideView_get_val(TreeNode *root, int *dest, int* depth_flag, int depth, int *returnSize)
+{
+	if (root->right != NULL) {
+		if (!depth_flag[depth]) {
+			*returnSize += 1;
+			depth_flag[depth] = 1;
+			dest[depth] = root->right->val;	
+		}
+		rightSideView_get_val(root->right, dest, depth_flag, depth + 1, returnSize);
+	} 
+	if (root->left != NULL) {
+		if (!depth_flag[depth]) {
+			*returnSize += 1;
+			depth_flag[depth] = 1;
+			dest[depth] = root->left->val;	
+		}
+		rightSideView_get_val(root->left, dest, depth_flag, depth + 1, returnSize);
+	}
+}
+
+int* rightSideView(TreeNode* root, int* returnSize) 
+{
+	int depth_flag[10000] = { 0 };
+	int temp[10000] = { -1 };
+	int depth = 0;
+	if (root == NULL) {
+		*returnSize = 0;
+		return NULL;
+	}
+	temp[depth++] = root->val;
+	*returnSize = 1;
+	rightSideView_get_val(root, temp, depth_flag, depth, returnSize);
+	int* res = (int*)malloc(sizeof(int) * (*returnSize));
+	for (int i = 0; i < *returnSize; i++) {
+		res[i] = temp[i];
+	}
+	return res;
+}

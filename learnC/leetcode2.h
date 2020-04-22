@@ -19,6 +19,12 @@ typedef struct {
 	user users[10000];
 } Twitter;
 
+typedef struct _TreeNode {
+	int val;
+	struct _TreeNode* left;
+	struct _TreeNode* right;
+}TreeNode;
+
 Twitter* twitterCreate();
 void twitterPostTweet(Twitter* obj, int userId, int tweetId);
 int* twitterGetNewsFeed(Twitter* obj, int userId, int* retSize);
@@ -34,5 +40,6 @@ int maxArea(int* height, int heightSize);
 int getMaxRepetitions(char* s1, int n1, char* s2, int n2);
 int numIslands(char** grid, int gridSize, int* gridColSize);
 int numberOfSubarrays(int* nums, int numsSize, int k);
+int* rightSideView(TreeNode* root, int* returnSize);
 
 #endif
