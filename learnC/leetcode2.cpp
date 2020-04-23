@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 #include "leetcode2.h"
 
 /** Initialize your data structure here. */
@@ -505,5 +506,38 @@ int* rightSideView(TreeNode* root, int* returnSize)
 	for (int i = 0; i < *returnSize; i++) {
 		res[i] = temp[i];
 	}
+	return res;
+}
+
+int waysToChange(int n) 
+{
+	int res = 1;
+	int temp_n = n;
+	int temp_res = 0;
+	int a1 = n / 25;
+	int a2 = 0;
+	int a3 = 0;
+	for (int i = 1; i <= a1; i++) {
+		temp_n = n - 25 * i;
+		int temp_n2 = 0;
+ 		a2 = temp_n / 10;
+		for (int j = 0; j <= a2; j++) {
+			temp_n2 = temp_n - 10 * j;
+			a3 = temp_n2 / 5;
+			temp_res = (temp_res + a3 + 1) % 1000000007;
+		}
+	}
+	res = (res + temp_res) % 1000000007;
+	temp_res = 0;
+	temp_n = n;
+	a1 = n / 10;
+	for (int i = 1; i <= a1; i++) {
+		temp_n = n - 10 * i;
+		a2 = temp_n / 5;
+		temp_res = (temp_res + a2 + 1) % 1000000007;
+	}
+	res = (res + temp_res) % 1000000007;
+	a1 = n / 5;
+	res = (res + a1) % 1000000007;
 	return res;
 }

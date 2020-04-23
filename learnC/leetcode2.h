@@ -41,5 +41,6 @@ int getMaxRepetitions(char* s1, int n1, char* s2, int n2);
 int numIslands(char** grid, int gridSize, int* gridColSize);
 int numberOfSubarrays(int* nums, int numsSize, int k);
 int* rightSideView(TreeNode* root, int* returnSize);
+int waysToChange(int n);
 
 #endif
