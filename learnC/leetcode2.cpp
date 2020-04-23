@@ -509,7 +509,7 @@ int* rightSideView(TreeNode* root, int* returnSize)
 	return res;
 }
 
-int waysToChange(int n) 
+int waysToChange2(int n) 
 {
 	int res = 1;
 	int temp_n = n;
@@ -541,3 +541,24 @@ int waysToChange(int n)
 	res = (res + a1) % 1000000007;
 	return res;
 }
+#define MMAX(a, b)        ((a) > (b)? (a) : (b))
+#define MMIN(a, b)        ((a) < (b)? (a) : (b))
+
+int coins[4] = { 1, 5, 10, 25 };
+
+//¡¾Ëã·¨Ë¼Â·¡¿dp¡£
+int waysToChange(int n) {
+	int* dp = (int*)calloc(n + 1, sizeof(int));
+	dp[0] = 1;
+	for (int i = 0; i < 4; i++) {
+		int coin = coins[i];
+
+		for (int j = 1; j <= n; j++) {
+			if (j - coin >= 0) {
+				dp[j] = (dp[j] + dp[j - coin]) % 1000000007;
+			}
+		}
+	}
+	return dp[n];
+}
+
