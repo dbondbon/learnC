@@ -42,5 +42,6 @@ int numIslands(char** grid, int gridSize, int* gridColSize);
 int numberOfSubarrays(int* nums, int numsSize, int k);
 int* rightSideView(TreeNode* root, int* returnSize);
 int waysToChange(int n);
+int reversePairs(int* nums, int numsSize);
 
 #endif

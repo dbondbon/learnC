@@ -559,6 +559,20 @@ int waysToChange(int n) {
 			}
 		}
 	}
-	return dp[n];
+	int res = dp[n];
+	return res;
 }
 
+int reversePairs(int* nums, int numsSize) 
+{
+	int res = 0;
+	for (int i = 0; i < numsSize - 1; i++) {
+		int k = nums[i];
+		for (int j = i + 1; j < numsSize; j++) {
+			if (nums[j] < k) {
+				res++;
+			}
+		}
+	}
+	return res;
+}
