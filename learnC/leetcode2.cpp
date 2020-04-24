@@ -563,16 +563,51 @@ int waysToChange(int n) {
 	return res;
 }
 
-int reversePairs(int* nums, int numsSize) 
-{
-	int res = 0;
-	for (int i = 0; i < numsSize - 1; i++) {
-		int k = nums[i];
-		for (int j = i + 1; j < numsSize; j++) {
-			if (nums[j] < k) {
-				res++;
-			}
+// 并函数
+// tempArr 只在主函数申请一次的长度为numsSize的数组，防止递归过程中每次申请一个数组
+// 将结果并到tempArr之后拷贝到原数组的相应部分
+void Merge(int left, int center, int right, int* nums, int* tempArr, int* ret) {
+	int tPos = left;
+	int lPos = left;
+	int rPos = center + 1;
+	// 两个数组非空时，比较后合到一起
+	while (lPos <= center && rPos <= right) {
+		if (nums[lPos] <= nums[rPos]) {
+			tempArr[tPos++] = nums[lPos++];
+		}
+		else {
+			(*ret) = (*ret) + (center - lPos + 1);
+			tempArr[tPos++] = nums[rPos++];
 		}
 	}
-	return res;
+	// 其中一个数组用完之后，将另一个数组直接加到tempArr末尾
+	while (lPos <= center) {
+		tempArr[tPos++] = nums[lPos++];
+	}
+	while (rPos <= right) {
+		tempArr[tPos++] = nums[rPos++];
+	}
+	//// 将结果并到tempArr之后拷贝到原数组的相应部分
+	for (int i = left; i <= right; i++) {
+		nums[i] = tempArr[i];
+	}
+}
+// 分治法的函数
+void Msort(int left, int right, int* nums, int* tempArr, int* ret) {
+	// 递归的终止条件
+	if (left >= right) { return; }
+	else {
+		int center = left + (right - left) / 2;
+		Msort(left, center, nums, tempArr, ret);
+		Msort(center + 1, right, nums, tempArr, ret);
+		// 调用合函数
+		Merge(left, center, right, nums, tempArr, ret);
+	}
+}
+
+int reversePairs(int* nums, int numsSize) {
+	int* ret = (int*)calloc(1, sizeof(int));
+	int* tempArr = (int*)calloc(numsSize, sizeof(int));
+	Msort(0, numsSize - 1, nums, tempArr, ret);
+	return *ret;
 }
