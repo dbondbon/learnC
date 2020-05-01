@@ -352,9 +352,6 @@ bool canJump(int* nums, int numsSize)
 	return 0;
 }
 
-#define max(a, b) (((a) > (b)) ? (a) : (b))
-#define min(a, b) (((a) > (b)) ? (b) : (a))
-
 int maxArea(int* height, int heightSize) 
 {
 	int res = 0;

@@ -7,6 +7,9 @@
 
 #include "algorithm.h"
 
+#define max(a, b) (((a) > (b)) ? (a) : (b))
+#define min(a, b) (((a) < (b)) ? (a) : (b))
+
 typedef struct _LFUCache {
 	struct _LFUCache *prev;
 	struct _LFUCache *next;

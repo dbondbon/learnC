@@ -1259,17 +1259,20 @@ int minDistance(char* word1, char* word2)
 
 int coinChange(int* coins, int coinsSize, int amount) 
 {
-	int res = -1;
-	if (coinsSize == 0) {
-		return res;
+	int* dp = (int*)malloc(sizeof(int) * (amount + 1));
+	for (int i = 0; i < amount + 1; i++) {
+		dp[i] = amount + 1;
 	}
-	int* dp = (int*)malloc(sizeof(int) * coinsSize);
-	if (amount % coins[0] == 0) {
-
+	dp[0] = 0;
+	for (int i = 1; i <= amount; i++) {
+		for (int j = 0; j < coinsSize; j++) {
+			if (i >= coins[j]) {
+				dp[i] = min(dp[i - coins[j]] + 1, dp[i]);
+			}
+		}
 	}
-	for (int i = 0; i < coinsSize; i++) {
-
-	}
+	int res = dp[amount] > amount ? -1 : dp[amount];
+	free(dp);
 	return res;
 }
 
@@ -1427,9 +1430,6 @@ char* reverseWords(char* s)
 	free(res);
 	return s;
 }
-
-#define max(a, b) (((a) > (b)) ? (a) : (b))
-#define min(a, b) (((a) < (b)) ? (a) : (b))
 
 int superEggDrop(int K, int N) 
 {

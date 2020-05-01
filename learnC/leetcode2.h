@@ -3,6 +3,9 @@
 
 #include "algorithm.h"
 
+#define max(a, b) (((a) > (b)) ? (a) : (b))
+#define min(a, b) (((a) > (b)) ? (b) : (a))
+
 typedef struct _tweet {
 	int tweet_id;
 	int post_time;
