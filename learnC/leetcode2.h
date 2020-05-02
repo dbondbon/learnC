@@ -47,5 +47,6 @@ int* rightSideView(TreeNode* root, int* returnSize);
 int waysToChange(int n);
 int reversePairs(int* nums, int numsSize);
 int lengthOfLongestSubstring(char* s);
+int lengthOfLongestSubstring_simple(char* s);
 
 #endif
