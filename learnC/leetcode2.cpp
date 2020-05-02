@@ -642,32 +642,29 @@ int lengthOfLongestSubstring(char* s)
 
 int lengthOfLongestSubstring_simple(char* s)
 {
+	int* temp = (int *)malloc(sizeof(int) * 256);
+	memset(temp, 0, sizeof(int) * 256);
 	int res = 0;
 	int len = strlen(s);
 	if (len == 1) {
 		return 1;
 	}
 	for (int i = 0; i < len - 1; i++) {
-		int temp_res = 1;
-		for (int j = i + 1; j < len; j++) {
-			int flag = 0;
-			for (int k = i; k <= j - 1; k++) {
-				if (s[k] == s[j]) {
-					flag = 1;
-					i = k;
-					break;
-				}
-			}
-			if (!flag) {
-				temp_res++;
-			} else {
+		int temp_res = 0;
+		for (int j = i; j < len; j++) {
+			if (temp[s[j]]) {
 				break;
+			} else {
+				temp[s[j]]++;
+				temp_res++;
 			}
 		}
 		res = max(temp_res, res);
+		memset(temp, 0, sizeof(int) * 256);
 		if (len - i <= res) {
 			break;
 		}
 	}
+	free(temp);
 	return res;
 }
