@@ -608,3 +608,34 @@ int reversePairs(int* nums, int numsSize) {
 	Msort(0, numsSize - 1, nums, tempArr, ret);
 	return *ret;
 }
+
+int lengthOfLongestSubstring(char* s) 
+{
+	int res = 0;
+	int len = strlen(s);
+	if (len == 1) {
+		return 1;
+	}
+	for (int i = 0; i < len - 1; i++) {
+		int temp_res = 1;
+		for (int j = i + 1; j < len; j++) {
+			int flag = 0;
+			for (int k = i; k <= j - 1; k++) {
+				if (s[k] == s[j]) {
+					flag = 1;
+					break;
+				}
+			}
+			if (!flag) {
+				temp_res++;
+			} else {
+				break;
+			}
+		}
+		res = max(temp_res, res);
+		if (len - i <= res) {
+			break;
+		}
+	}
+	return res;
+}

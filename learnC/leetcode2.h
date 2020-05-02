@@ -46,5 +46,6 @@ int numberOfSubarrays(int* nums, int numsSize, int k);
 int* rightSideView(TreeNode* root, int* returnSize);
 int waysToChange(int n);
 int reversePairs(int* nums, int numsSize);
+int lengthOfLongestSubstring(char* s);
 
 #endif
