@@ -48,5 +48,6 @@ int waysToChange(int n);
 int reversePairs(int* nums, int numsSize);
 int lengthOfLongestSubstring(char* s);
 int lengthOfLongestSubstring_simple(char* s);
+int mySqrt(int x);
 
 #endif

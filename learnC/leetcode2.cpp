@@ -668,3 +668,9 @@ int lengthOfLongestSubstring_simple(char* s)
 	free(temp);
 	return res;
 }
+
+int mySqrt(int x) 
+{
+	int res = sqrt(x);
+	return res;
+}
