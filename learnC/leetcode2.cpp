@@ -671,6 +671,21 @@ int lengthOfLongestSubstring_simple(char* s)
 
 int mySqrt(int x) 
 {
-	int res = sqrt(x);
+	int res = 0;
+	long left = 1;
+	long right = x;
+	long mid = (left + right) / 2;
+	while (left < right) {
+		if (x > mid * mid) {
+			left = mid + 1;
+		} else if (x == mid * mid) {
+			res = mid;
+			return res;
+		} else {
+			right = mid - 1 ;
+		}
+		mid = (left + right) / 2;
+	}
+	res = mid * mid > x ? mid - 1 : mid;
 	return res;
 }
