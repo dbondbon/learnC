@@ -689,3 +689,65 @@ int mySqrt(int x)
 	res = mid * mid > x ? mid - 1 : mid;
 	return res;
 }
+
+bool validPalindrome(char* s) 
+{
+	int s_len = strlen(s);
+	if (s_len < 2) {
+		return 1;
+	}
+	for (int i = 0; i < s_len / 2; i++) {
+		if (s[i] != s[s_len - i - 1]) {
+			break;
+		}
+		if (i == s_len / 2 - 1) {
+			return 1;
+		}
+	}
+	int left = 0;
+	int right = s_len - 1;
+	while (left < right) {
+		if (s[left] == s[right]) {
+			left++;
+			right--;
+		} else {
+			int flag = 0;
+			// left++
+			int temp_left = left + 1;
+			int temp_right = right;
+			while (temp_left <= temp_right) {
+				if (s[temp_left] == s[temp_right]) {
+					temp_left++;
+					temp_right--;
+				} else {
+					break;
+				}
+				if (temp_left >= temp_right) {
+					flag = 1;
+				}
+			}
+			if (flag) {
+				return 1;
+			}
+			// right--
+			temp_left = left;
+			temp_right = right - 1;
+			while (temp_left <= temp_right) {
+				if (s[temp_left] == s[temp_right]) {
+					temp_left++;
+					temp_right--;
+				} else {
+					break;
+				}
+				if (temp_left >= temp_right) {
+					return 1;
+				}
+			}
+			return 0;
+		}
+		if (left >= right) {
+			return 1;
+		}
+	}
+	return 0;
+}
