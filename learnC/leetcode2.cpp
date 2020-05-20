@@ -860,7 +860,7 @@ int findTheLongestSubstring(char* s)
 		int left = i;
 		int right = s_len - 1;
 		if (right - left + 1 <= res) {
-			break;;
+			break;
 		}
 		int flag = 0;
 		while (!findTheLongestSubstring_check(s, a_char, a_count, e_char, e_count, i_char, i_count,
@@ -881,5 +881,37 @@ int findTheLongestSubstring(char* s)
 int findTheLongestSubstring_simple(char* s)
 {
 	int res = 0;
+	int s_len = strlen(s);
+	int* temp = (int*)malloc(sizeof(int) * (s_len + 1));
+	memset(temp, 0, sizeof(int) * (s_len + 1));
+	for (int i = 0; i < s_len; i++) {
+		if (s[i] == 'a') {
+			temp[i] = 1 << 0;
+		} else if (s[i] == 'e') {
+			temp[i] = 1 << 1;
+		} else if (s[i] == 'i') {
+			temp[i] = 1 << 2;
+		} else if (s[i] == 'o') {
+			temp[i] = 1 << 3;
+		} else if (s[i] == 'u') {
+			temp[i] = 1 << 4;
+		}
+		if (i != 0) {
+			temp[i] += temp[i - 1];
+		}
+	}
+	for (int i = 0; i < s_len; i++) {
+		int left = i;
+		int right = s_len - 1;
+		if (right - left + 1 <= res) {
+			break;
+		}
+		while (temp[right] - temp[left] != 0) {
+			right--;
+		}
+		int temp_res = right - left + 1;
+		res = max(res, temp_res);
+	}
+	free(temp);
 	return res;
 }
