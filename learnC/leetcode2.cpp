@@ -751,3 +751,126 @@ bool validPalindrome(char* s)
 	}
 	return 0;
 }
+
+static bool findTheLongestSubstring_check(char* s, int* a_char, int a_count, int* e_char, int e_count, int* i_char, int i_count,
+										  int* o_char, int o_count, int* u_char, int u_count, int left, int right)
+{
+	int temp = 0;
+	// check a
+	for (int i = 0; i < a_count; i++) {
+		if (a_char[i] >= left && a_char[i] <= right) {
+			temp++;
+		} else if (a_char[i] > right) {
+			break;
+		}
+	}
+	if (temp % 2 != 0) {
+		return 0;
+	}
+	// check e
+	temp = 0;
+	for (int i = 0; i < e_count; i++) {
+		if (e_char[i] >= left && e_char[i] <= right) {
+			temp++;
+		}
+		else if (e_char[i] > right) {
+			break;
+		}
+	}
+	if (temp % 2 != 0) {
+		return 0;
+	}
+	// check i
+	temp = 0;
+	for (int i = 0; i < i_count; i++) {
+		if (i_char[i] >= left && i_char[i] <= right) {
+			temp++;
+		}
+		else if (i_char[i] > right) {
+			break;
+		}
+	}
+	if (temp % 2 != 0) {
+		return 0;
+	}
+	// check o
+	temp = 0;
+	for (int i = 0; i < o_count; i++) {
+		if (o_char[i] >= left && o_char[i] <= right) {
+			temp++;
+		}
+		else if (o_char[i] > right) {
+			break;
+		}
+	}
+	if (temp % 2 != 0) {
+		return 0;
+	}
+	// check u
+	temp = 0;
+	for (int i = 0; i < u_count; i++) {
+		if (u_char[i] >= left && u_char[i] <= right) {
+			temp++;
+		}
+		else if (u_char[i] > right) {
+			break;
+		}
+	}
+	if (temp % 2 != 0) {
+		return 0;
+	}
+	return 1;
+}
+
+int findTheLongestSubstring(char* s) 
+{
+	int res = 0;
+	int s_len = strlen(s);
+	int *a_char = (int*)malloc(sizeof(int) * 5 * 100000);
+	int a_count = 0;
+	memset(a_char, 0, sizeof(int) * 5 * 100000);
+	int *e_char = (int*)malloc(sizeof(int) * 5 * 100000);
+	int e_count = 0;
+	memset(e_char, 0, sizeof(int) * 5 * 100000);
+	int *i_char = (int*)malloc(sizeof(int) * 5 * 100000);
+	int i_count = 0;
+	memset(i_char, 0, sizeof(int) * 5 * 100000);
+	int* o_char = (int*)malloc(sizeof(int) * 5 * 100000);
+	int o_count = 0;
+	memset(o_char, 0, sizeof(int) * 5 * 100000);
+	int* u_char = (int*)malloc(sizeof(int) * 5 * 100000);
+	int u_count = 0;
+	memset(u_char, 0, sizeof(int) * 5 * 100000);
+
+	for (int i = 0; i < s_len; i++) {
+		if (s[i] == 'a') {
+			a_char[a_count++] = i;
+		} else if (s[i] == 'e') {
+			e_char[e_count++] = i;
+		} else if (s[i] == 'i') {
+			i_char[i_count++] = i;
+		} else if (s[i] == 'o') {
+			o_char[o_count++] = i;
+		} else if (s[i] == 'u') {
+			u_char[u_count++] = i;
+		}
+	}
+	int temp_res = 0;
+	for (int i = 0; i < s_len; i++) {
+		int left = i;
+		int right = s_len - 1;
+		int flag = 0;
+		while (!findTheLongestSubstring_check(s, a_char, a_count, e_char, e_count, i_char, i_count,
+			o_char, o_count, u_char, u_count, left, right)) {
+			right--;
+		}
+		temp_res = right - left + 1;
+		res = max(res, temp_res);
+	}
+	free(a_char);
+	free(e_char);
+	free(i_char);
+	free(o_char);
+	free(u_char);
+	return res;
+}
