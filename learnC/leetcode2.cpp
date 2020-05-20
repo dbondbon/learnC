@@ -897,7 +897,7 @@ int findTheLongestSubstring_simple(char* s)
 			temp[i] = 1 << 4;
 		}
 		if (i != 0) {
-			temp[i] += temp[i - 1];
+			temp[i] ^= temp[i - 1];
 		}
 	}
 	for (int i = 0; i < s_len; i++) {
@@ -906,11 +906,14 @@ int findTheLongestSubstring_simple(char* s)
 		if (right - left + 1 <= res) {
 			break;
 		}
-		while (temp[right] - temp[left] != 0) {
+		int k = left == 0 ? 0 : temp[left - 1];
+		while (temp[right] - k != 0 && right >= left) {
 			right--;
+			if (right < 0) {
+				break;
+			}
 		}
-		int temp_res = right - left + 1;
-		res = max(res, temp_res);
+		res = max(res, right - left + 1);
 	}
 	free(temp);
 	return res;
