@@ -52,5 +52,9 @@ int mySqrt(int x);
 bool validPalindrome(char* s);
 int findTheLongestSubstring(char* s);
 int findTheLongestSubstring_simple(char* s);
+TreeNode* buildTree(int* preorder, int preorderSize, int* inorder, int inorderSize);
+
+
+void free_tree(TreeNode *tree_root);
 
 #endif

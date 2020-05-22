@@ -918,3 +918,22 @@ int findTheLongestSubstring_simple(char* s)
 	free(temp);
 	return res;
 }
+
+TreeNode* buildTree(int* preorder, int preorderSize, int* inorder, int inorderSize) 
+{
+
+	return NULL;
+}
+
+void free_tree(TreeNode* tree_root)
+{
+	if (tree_root != NULL) {
+		if (tree_root->left != NULL) {
+			free_tree(tree_root->left);
+		}
+		if (tree_root->right != NULL) {
+			free_tree(tree_root->right);
+		}
+		free(tree_root);
+	}
+}
