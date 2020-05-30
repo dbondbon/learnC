@@ -919,9 +919,38 @@ int findTheLongestSubstring_simple(char* s)
 	return res;
 }
 
+static TreeNode* buildTree_subtree(int *preorder, int preorderSize, int preorder_start, int preorder_end,
+								   int *inorder, int inorderSize, int inorder_start, int inorder_end)
+{
+	TreeNode *res = NULL;
+	if (preorderSize != 0) {
+		res = (TreeNode*)malloc(sizeof(TreeNode));
+		res->val = preorder[preorder_start];
+		int i = inorder_start;
+		while (inorder[i] != res->val) {
+			i++;
+		}
+		int left_preorderSize = i - inorder_start;
+		int left_inorderSize = i - inorder_start;
+		res->left = buildTree_subtree(preorder, preorderSize, preorder_start, preorder_end, 
+									  inorder, inorderSize, inorder_start, inorder_end);
+		res->right = buildTree_subtree(preorder, preorderSize, preorder_start, preorder_end,
+									  inorder, inorderSize, inorder_start, inorder_end);
+	}
+	return res;
+}
+
 TreeNode* buildTree(int* preorder, int preorderSize, int* inorder, int inorderSize) 
 {
+	if (preorderSize != 0) {
+		TreeNode* res = (TreeNode*)malloc(sizeof(TreeNode));
+		res->val = preorder[0];
 
+		int i = 0;
+		while (inorder[i] != res->val) {
+			i++;
+		}
+	}
 	return NULL;
 }
 
@@ -936,4 +965,17 @@ void free_tree(TreeNode* tree_root)
 		}
 		free(tree_root);
 	}
+}
+
+int findDuplicate(int* nums, int numsSize) 
+{
+	int temp[100000] = { 0 };
+	for (int i = 0; i < numsSize; i++) {
+		if (temp[nums[i]] == 0) {
+			temp[nums[i]] = 1;
+		} else {
+			return nums[i];
+		}
+	}
+	return 0;
 }

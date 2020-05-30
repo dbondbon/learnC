@@ -57,4 +57,6 @@ TreeNode* buildTree(int* preorder, int preorderSize, int* inorder, int inorderSi
 
 void free_tree(TreeNode *tree_root);
 
+int findDuplicate(int* nums, int numsSize);
+
 #endif
