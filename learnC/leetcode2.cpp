@@ -996,7 +996,7 @@ int* spiralOrder(int** matrix, int matrixSize, int* matrixColSize, int *returnSi
 	int index_y = 0;
 	int index = 0;
 	int flag = 0; // ср 0 об 1 вС 2 ио 3
-	while (index_x < matrixSize && index_x >= 0 && index_y >= 0 && index_y < (*matrixColSize) && temp[index_x][index_y] == 0) {
+	while (index < (*returnSize)) {
 		temp[index_x][index_y] = 1;
 		res[index++] = matrix[index_x][index_y];
 		switch (flag) {
