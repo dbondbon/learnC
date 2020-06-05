@@ -979,3 +979,66 @@ int findDuplicate(int* nums, int numsSize)
 	}
 	return 0;
 }
+
+int* spiralOrder(int** matrix, int matrixSize, int* matrixColSize, int *returnSize) {
+	if (matrixSize == 0) {
+		*returnSize = 0;
+		return NULL;
+	}
+	*returnSize = matrixSize * (*matrixColSize);
+	int* res = (int*)malloc(sizeof(int) * (*returnSize));
+	int **temp = (int**)malloc(sizeof(int*) * matrixSize);
+	for (int i = 0; i < matrixSize; i++) {
+		temp[i] = (int*)malloc(sizeof(int) * (*matrixColSize));
+		memset(temp[i], 0, sizeof(int) * (*matrixColSize));
+	}
+	int index_x = 0;
+	int index_y = 0;
+	int index = 0;
+	int flag = 0; // ср 0 об 1 вС 2 ио 3
+	while (index_x < matrixSize && index_x >= 0 && index_y >= 0 && index_y < (*matrixColSize) && temp[index_x][index_y] == 0) {
+		temp[index_x][index_y] = 1;
+		res[index++] = matrix[index_x][index_y];
+		switch (flag) {
+			case 0:
+				if (index_y + 1 == (*matrixColSize) || temp[index_x][index_y + 1] == 1) {
+					flag = 1;
+					index_x++;
+				} else {
+					index_y++;
+				}
+				break;
+			case 1:
+				if (index_x + 1 == matrixSize || temp[index_x + 1][index_y] == 1) {
+					flag = 2;
+					index_y--;
+				} else {
+					index_x++;
+				}
+				break;
+			case 2:
+				if (index_y == 0 || temp[index_x][index_y - 1] == 1) {
+					flag = 3;
+					index_x--;
+				} else {
+					index_y--;
+				}
+				break;
+			case 3:
+				if (index_x == 0 || temp[index_x - 1][index_y] == 1) {
+					flag = 0;
+					index_y++;
+				} else {
+					index_x--;
+				}
+				break;
+			default:
+				break;
+		}
+	}
+	for (int i = 0; i < matrixSize; i++) {
+		free(temp[i]);
+	}
+	free(temp);
+	return res;
+}
