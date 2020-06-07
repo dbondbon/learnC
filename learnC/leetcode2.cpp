@@ -1042,3 +1042,37 @@ int* spiralOrder(int** matrix, int matrixSize, int* matrixColSize, int *returnSi
 	free(temp);
 	return res;
 }
+
+bool isValid(char* s) 
+{
+	int len = strlen(s);
+	if (len % 2 != 0) {
+		return 0;
+	}
+	char *my_stack = (char*)malloc(sizeof(char) * len);
+	int index = -1;
+	for (int i = 0; i < len; i++) {
+		if (s[i] == '(' || s[i] == '{' || s[i] == '[') {
+			my_stack[++index] = s[i];
+		} else {
+			if (index == -1) {
+				free(my_stack);
+				return 0;
+			}
+			if ((s[i] == ')' && my_stack[index] == '(') || 
+				(s[i] == '}' && my_stack[index] == '{') ||
+				(s[i] == ']' && my_stack[index] == '[')) {
+				index--;
+			} else {
+				free(my_stack);
+				return 0;
+			}
+		}
+	}
+	free(my_stack);
+	if (index == -1) {
+		return 1;
+	} else {
+		return 0;
+	}
+}
