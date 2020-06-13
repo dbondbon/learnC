@@ -1094,3 +1094,20 @@ int climbStairs(int n)
 	free(temp);
 	return res;
 }
+
+int climbStairs_simple(int n)
+{
+	int p = 1;
+	int q = 2;
+	int r = 0;
+	if (n < 3) {
+		return n == 1 ? p : q;
+	}
+	for (int i = 3; i <= n; i++) {
+		// p q r --> p p q ...
+		r = p + q;
+		p = q;
+		q = r;
+	}
+	return r;
+}
