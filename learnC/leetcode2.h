@@ -60,5 +60,6 @@ void free_tree(TreeNode *tree_root);
 int findDuplicate(int* nums, int numsSize);
 int *spiralOrder(int** matrix, int matrixSize, int* matrixColSize, int* returnSize);
 bool isValid(char* s);
+int climbStairs(int n);
 
 #endif

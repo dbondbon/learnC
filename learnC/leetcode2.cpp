@@ -1076,3 +1076,21 @@ bool isValid(char* s)
 		return 0;
 	}
 }
+
+int climbStairs(int n)
+{
+	// f(n) = f(n - 1) + f(n - 2)  f(1) = 1   f£¨2£©= 2 
+	int res = 0;
+	if (n < 3) {
+		return n == 1 ? 1 : 2;
+	}
+	int *temp = (int*)malloc(sizeof(int) * (n + 1));
+	temp[1] = 1;
+	temp[2] = 2;
+	for (int i = 3; i <= n; i++) {
+		temp[i] = temp[i - 1] + temp[i - 2];
+	}
+	res = temp[n];
+	free(temp);
+	return res;
+}
