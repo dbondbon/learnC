@@ -9,5 +9,6 @@ void print_multiplication_table();
 int find_gcd(int, int);
 int palindromic_number(int);
 void flip_string();
+void demo();
 
 #endif

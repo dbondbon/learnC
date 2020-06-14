@@ -144,7 +144,7 @@ void pointer_demo() {
 	}
 }
 
-/*求阶乘*/
+/* 求阶乘 */
 double factorial(unsigned int i)
 {
 	if (i <= 1)
@@ -154,7 +154,7 @@ double factorial(unsigned int i)
 	return i * factorial(i - 1);
 }
 
-/*斐波那契数列*/
+/* 斐波那契数列 */
 int fibonaci(int i)
 {
 	if (i == 0)
@@ -215,4 +215,12 @@ void struct_demo()
 	book.price = 25.0;
 	printf("%s的书要%f元", book.author, book.price);
 	return;
+}
+
+/* C语言程序设计精髓 Demo */
+void demo()
+{
+	// 避免相加数值溢出
+	int low, high;
+	int mid = low + (high - low) / 2;
 }
