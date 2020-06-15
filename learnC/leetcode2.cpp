@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdlib.h>
 #include <string.h>
 #include <math.h>
@@ -1110,4 +1111,47 @@ int climbStairs_simple(int n)
 		q = r;
 	}
 	return r;
+}
+
+char* longestCommonPrefix(char** strs, int strsSize) 
+{
+	int prefix_len = INT_MAX;
+	int cmp_len = INT_MAX;
+	for (int i = 0; i < strsSize - 1; i++) {
+		int len1 = strlen(strs[i]);
+		int len2 = strlen(strs[i + 1]);
+		int temp_prefix_len = 0;
+		int temp_len = min(len1, len2);
+		cmp_len = min(temp_len, cmp_len);
+		for (int j = 0; j < cmp_len; j++) {
+			if (strs[i][j] == strs[i + 1][j]) {
+				temp_prefix_len++;
+			} else {
+				break;
+			}
+		}
+		cmp_len = temp_prefix_len;
+		prefix_len = min(temp_prefix_len, prefix_len);
+		if (!temp_prefix_len) {
+			break;
+		}
+	}
+	if (prefix_len == INT_MAX) {
+		if (strsSize == 0) {
+			char* res = (char*)malloc(sizeof(char) * 2);
+			res[0] = '\0';
+			return res;
+		} else {
+			int res_len = strlen(strs[0]);
+			char* res = (char*)malloc(sizeof(char) * (res_len + 1));
+			strncpy(res, strs[0], sizeof(char) * res_len);
+			res[res_len] = '\0';
+			return res;
+		}
+	} else {
+		char* res = (char*)malloc(sizeof(char) * (prefix_len + 1));
+		strncpy(res, strs[0], sizeof(char) * prefix_len);
+		res[prefix_len] = '\0';
+		return res;
+	}
 }
