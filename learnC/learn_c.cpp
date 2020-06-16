@@ -3,6 +3,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include <string.h>
+#include <time.h>
 #include "learn_c.h"
 
 void enum_demo() 
@@ -191,7 +192,7 @@ void bubble_sort(int arr[], int len)
 void string_demo() {
 	char str[] = { 'A', 'B', '\0' };
 	printf("%s", str);
-	printf("%d", strlen(str));
+	printf("%d", (int)strlen(str));
 }
 
 void struct_demo()
@@ -221,6 +222,13 @@ void struct_demo()
 void demo()
 {
 	// 避免相加数值溢出
-	int low, high;
+	int low = 0;
+	int high = 1;
 	int mid = low + (high - low) / 2;
+
+	// 随机数
+	srand(time(NULL));
+	int a = rand() % 10;
+	int b = rand() % 10;
+	int c = rand() % 10;
 }
