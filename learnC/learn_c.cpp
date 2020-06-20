@@ -231,4 +231,18 @@ void demo()
 	int a = rand() % 10;
 	int b = rand() % 10;
 	int c = rand() % 10;
+
+	// »º³åÇøÒç³ö¹¥»÷Ê¾Àý
+	char password[8] = "secret";
+	char input[8];
+	while (1) {
+		printf("Please enter you password:");
+		scanf("%s", input);
+		if (strcmp(password, input) == 0) {
+			printf("Welcome!\n");
+			break;
+		} else {
+			printf("Sorry!\n");
+		}
+	}
 }
