@@ -10,5 +10,6 @@ int find_gcd(int, int);
 int palindromic_number(int);
 void flip_string();
 void demo();
+void guess_game();
 
 #endif
