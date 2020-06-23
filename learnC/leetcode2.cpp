@@ -1155,3 +1155,74 @@ char* longestCommonPrefix(char** strs, int strsSize)
 		return res;
 	}
 }
+
+bool patternMatching(char* pattern, char* value) {
+	return 1;
+} // 16.18
+
+char* addBinary(char* a, char* b) 
+{
+	int a_len = strlen(a);
+	int b_len = strlen(b);
+	int flag = 0;
+	int res_len = max(a_len, b_len);
+	char* res = (char*)malloc(sizeof(char) * (res_len + 1));
+	res[res_len] = '\0';
+	int index_a = a_len - 1;
+	int index_b = b_len - 1;
+	int index_res = res_len - 1;
+	while (index_a >= 0 && index_b >= 0) {
+		if (a[index_a] == '0' && b[index_b] == '0') {
+			res[index_res--] = flag ? '1' : '0';
+			flag = 0;
+		} else if ((a[index_a] == '0' && b[index_b] == '1') ||
+			       (a[index_a] == '1' && b[index_b] == '0')) {
+			res[index_res--] = flag ? '0' : '1';
+		} else {
+			res[index_res--] = flag ? '1' : '0';
+			flag = 1;
+		}
+		index_a--;
+		index_b--;
+	}
+	if (index_a >= 0) {
+		while (index_a >= 0) {
+			if (a[index_a] == '0' && !flag) {
+				res[index_res--] = '0';
+				flag = 0;
+			} else if ((a[index_a] == '0' && flag) ||
+				(a[index_a] == '1' && !flag)) {
+				res[index_res--] = '1';
+				flag = 0;
+			} else {
+				res[index_res--] = '0';
+				flag = 1;
+			}
+			index_a--;
+		}
+	} else if (index_b >= 0) {
+		while (index_b >= 0) {
+			if (b[index_b] == '0' && !flag) {
+				res[index_res--] = '0';
+				flag = 0;
+			} else if ((b[index_b] == '0' && flag) ||
+				(b[index_b] == '1' && !flag)) {
+				res[index_res--] = '1';
+				flag = 0;
+			} else {
+				res[index_res--] = '0';
+				flag = 1;
+			}
+			index_b--;
+		}
+	}
+	if (flag) {
+		char* res2 = (char*)malloc(sizeof(char) * (res_len + 2));
+		res2[0] = '1';
+		strcpy(&res2[1], res);
+		free(res);
+		return res2;
+	}
+	return res;
+}
+

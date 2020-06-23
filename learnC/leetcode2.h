@@ -62,5 +62,7 @@ int *spiralOrder(int** matrix, int matrixSize, int* matrixColSize, int* returnSi
 bool isValid(char* s);
 int climbStairs(int n);
 char* longestCommonPrefix(char** strs, int strsSize);
+bool patternMatching(char* pattern, char* value);
+char* addBinary(char* a, char* b);
 
 #endif
