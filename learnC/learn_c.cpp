@@ -291,7 +291,11 @@ void guess_game()
 					printf("Game over，没机会啦，真笨！\n\n");
 					break;
 				} else {
-					printf("输的不对，你还剩%d次机会，再试试：", --total_times);
+					if (try_number > key_number) {
+						printf("猜的不对，太大了，你还剩%d次机会，再试试：", --total_times);
+					} else {
+						printf("猜的不对，太小了，你还剩%d次机会，再试试：", --total_times);
+					}
 				}
 			} else {
 				printf("恭喜你猜对了，运气真好，数字是%d！\n\n", key_number);
