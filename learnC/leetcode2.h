@@ -64,5 +64,6 @@ int climbStairs(int n);
 char* longestCommonPrefix(char** strs, int strsSize);
 bool patternMatching(char* pattern, char* value);
 char* addBinary(char* a, char* b);
+ListNode* removeDuplicateNodes(ListNode* head);
 
 #endif

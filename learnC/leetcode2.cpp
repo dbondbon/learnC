@@ -1226,3 +1226,31 @@ char* addBinary(char* a, char* b)
 	return res;
 }
 
+ListNode* removeDuplicateNodes(ListNode* head) 
+{
+	int temp_bucket[20001] = { 0 };
+	ListNode *cur = head;
+	if (cur == NULL) {
+		return NULL;
+	}
+	temp_bucket[cur->val] = 1;
+	ListNode *res = head;
+	ListNode *prev = cur;
+	cur = prev->next;
+	ListNode *next = NULL;
+	while (cur != NULL) {
+		next = cur->next;
+		if (temp_bucket[cur->val] == 1) {
+			prev->next = next;
+		} else {
+			temp_bucket[cur->val] = 1;
+			prev = cur;
+		}
+		cur = next;
+		if (cur != NULL) {
+			next = cur->next;
+		}
+	}
+	return res;
+}
+
