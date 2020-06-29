@@ -1254,3 +1254,18 @@ ListNode* removeDuplicateNodes(ListNode* head)
 	return res;
 }
 
+int findKthLargest(int* nums, int numsSize, int k) 
+{
+	int temp = 0;
+	for (int i = 0; i < k; i++) {
+		for (int j = 0; j < numsSize - i - 1; j++) {
+			if (nums[j] > nums[j + 1]) {
+				temp = nums[j];
+				nums[j] = nums[j + 1];
+				nums[j + 1] = temp;
+			}
+		}
+	}
+	return nums[numsSize - k];
+}
+
