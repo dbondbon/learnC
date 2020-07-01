@@ -1269,3 +1269,22 @@ int findKthLargest(int* nums, int numsSize, int k)
 	return nums[numsSize - k];
 }
 
+int findLength(int* A, int ASize, int* B, int BSize) 
+{
+	int res = 0;
+	int temp_i = 0;
+	int temp_j = 0;
+	for (int i = 0; i < ASize; i++) {
+		for (int j = 0; j < BSize; j++) {
+			temp_i = i;
+			temp_j = j;
+			while (temp_i < ASize && temp_j < BSize && A[temp_i] == B[temp_j]) {
+				temp_i++;
+				temp_j++;
+			}
+			res = max(res, temp_i - i);
+		}
+	}
+	return res;
+}
+
