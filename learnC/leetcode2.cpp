@@ -1283,6 +1283,12 @@ int findLength(int* A, int ASize, int* B, int BSize)
 				temp_j++;
 			}
 			res = max(res, temp_i - i);
+			if (BSize - j - 1 < res) {
+				break;
+			}
+		}
+		if (ASize - i - 1 < res) {
+			break;
 		}
 	}
 	return res;
