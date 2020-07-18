@@ -15,40 +15,16 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="learnCpp.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="learnCpp.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="learn_c.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="data_structure_c.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="algorithm.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="leetcode.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="leetcode2.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="learn_c.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="data_structure_c.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="algorithm.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="leetcode.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="leetcode2.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

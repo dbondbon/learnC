@@ -1,0 +1,15 @@
+﻿  leetcode2.cpp
+G:\C-C++\learnC\learnC\leetcode2.cpp(373,21): warning C4267:  “初始化”: 从“size_t”转换到“int”，可能丢失数据
+G:\C-C++\learnC\learnC\leetcode2.cpp(373,38): warning C4267:  “初始化”: 从“size_t”转换到“int”，可能丢失数据
+G:\C-C++\learnC\learnC\leetcode2.cpp(617,21): warning C4267:  “初始化”: 从“size_t”转换到“int”，可能丢失数据
+G:\C-C++\learnC\learnC\leetcode2.cpp(650,21): warning C4267:  “初始化”: 从“size_t”转换到“int”，可能丢失数据
+G:\C-C++\learnC\learnC\leetcode2.cpp(697,23): warning C4267:  “初始化”: 从“size_t”转换到“int”，可能丢失数据
+G:\C-C++\learnC\learnC\leetcode2.cpp(830,23): warning C4267:  “初始化”: 从“size_t”转换到“int”，可能丢失数据
+G:\C-C++\learnC\learnC\leetcode2.cpp(886,23): warning C4267:  “初始化”: 从“size_t”转换到“int”，可能丢失数据
+G:\C-C++\learnC\learnC\leetcode2.cpp(1050,21): warning C4267:  “初始化”: 从“size_t”转换到“int”，可能丢失数据
+G:\C-C++\learnC\learnC\leetcode2.cpp(1122,29): warning C4267:  “初始化”: 从“size_t”转换到“int”，可能丢失数据
+G:\C-C++\learnC\learnC\leetcode2.cpp(1123,33): warning C4267:  “初始化”: 从“size_t”转换到“int”，可能丢失数据
+G:\C-C++\learnC\learnC\leetcode2.cpp(1146,33): warning C4267:  “初始化”: 从“size_t”转换到“int”，可能丢失数据
+G:\C-C++\learnC\learnC\leetcode2.cpp(1166,23): warning C4267:  “初始化”: 从“size_t”转换到“int”，可能丢失数据
+G:\C-C++\learnC\learnC\leetcode2.cpp(1167,23): warning C4267:  “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  learnC.vcxproj -> G:\C-C++\learnC\x64\Debug\learnC.exe

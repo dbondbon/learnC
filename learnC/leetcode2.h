@@ -66,6 +66,7 @@ bool patternMatching(char* pattern, char* value);
 char* addBinary(char* a, char* b);
 ListNode* removeDuplicateNodes(ListNode* head);
 int findKthLargest(int* nums, int numsSize, int k);
-int findLength(int* A, int ASize, int* B, int BSize); // Ã‚∫≈ 718
+int findLength(int* A, int ASize, int* B, int BSize);
+int kthSmallest(int** matrix, int matrixSize, int* matrixColSize, int k);
 
 #endif

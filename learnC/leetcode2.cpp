@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdlib.h>
+#include <stdio.h>
 #include <string.h>
 #include <math.h>
 #include "leetcode2.h"
@@ -1292,5 +1293,39 @@ int findLength(int* A, int ASize, int* B, int BSize)
 		}
 	}
 	return res;
+}
+
+int kthSmallest(int** matrix, int matrixSize, int* matrixColSize, int k) 
+{
+	int* temp = (int*)malloc(sizeof(int) * 20001);
+	int index = 0;
+	int min_index = 20000;
+	int max_index = 0;
+	memset(temp, 0, sizeof(int) * 20001);
+	for (int i = 0; i < matrixSize; i++) {
+		for (int j = 0; j < matrixSize; j++) {
+			index = matrix[i][j] + 10000;
+			min_index = min(min_index, index);
+			max_index = max(max_index, index);
+			temp[index] += 1;
+		}
+	}
+	int temp_k = 0;
+	int res = 0;
+	for (res = min_index; res <= max_index; res++) {
+		if (temp[res]) {
+			temp_k += temp[res];
+			if (temp_k >= k) {
+				break;
+			}
+		}
+	}
+	free(temp);
+	return res - 10000;
+} // Ã‚378
+
+struct TreeNode* sortedArrayToBST(int* nums, int numsSize) 
+{
+
 }
 
